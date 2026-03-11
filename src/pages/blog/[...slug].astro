@@ -1,0 +1,126 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+
+// Get related posts (same category, exclude current)
+const allPosts = (await getCollection('blog')).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime()
+);
+const relatedPosts = allPosts
+  .filter(p => p.slug !== post.slug && p.data.category === post.data.category)
+  .slice(0, 3);
+---
+
+<BaseLayout title={`${post.data.title} | STAX Real Estate Blog`} description={post.data.excerpt}>
+
+  <!-- ARTICLE -->
+  <article class="pt-[140px] pb-16 px-6 lg:px-12">
+    <div class="max-w-[760px] mx-auto">
+
+      <!-- Breadcrumb -->
+      <div class="flex items-center gap-2 text-[13px] text-gray-500 mb-8">
+        <a href="/blog" class="hover:text-red transition-colors">Blog</a>
+        <span>&rsaquo;</span>
+        <span class="text-gray-400">{post.data.category}</span>
+      </div>
+
+      <!-- Header -->
+      <div class="mb-12">
+        <div class="flex items-center gap-3 mb-5">
+          <span class="inline-block text-[10px] font-semibold text-white bg-red px-2.5 py-1 rounded">{post.data.category}</span>
+          <span class="text-[13px] text-gray-500">{formatDate(post.data.date)}</span>
+        </div>
+        <h1 class="font-heading text-3xl lg:text-[44px] leading-[1.15] font-semibold text-black mb-6 tracking-tight">
+          {post.data.title}
+        </h1>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-red/10 flex items-center justify-center text-red font-semibold text-sm">MS</div>
+          <div>
+            <div class="text-[14px] font-semibold text-black">{post.data.author}</div>
+            <div class="text-[12px] text-gray-500">Managing Partner, STAX Real Estate</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="prose prose-lg max-w-none
+        prose-headings:font-heading prose-headings:font-semibold prose-headings:text-black prose-headings:tracking-tight
+        prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-4
+        prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
+        prose-p:text-[16px] prose-p:leading-[1.8] prose-p:text-gray-700
+        prose-strong:text-black prose-strong:font-semibold
+        prose-a:text-red prose-a:no-underline hover:prose-a:underline
+        prose-li:text-[16px] prose-li:text-gray-700
+        prose-blockquote:border-red prose-blockquote:text-gray-600
+      ">
+        <Content />
+      </div>
+
+      <!-- Author Bio -->
+      <div class="mt-16 pt-10 border-t border-black/8">
+        <div class="flex items-start gap-5">
+          <div class="w-16 h-16 rounded-full bg-red/10 flex items-center justify-center text-red font-semibold text-lg shrink-0">MS</div>
+          <div>
+            <div class="font-heading text-lg font-semibold text-black mb-1">Michael Salafia</div>
+            <div class="text-[13px] text-gray-500 mb-3">Managing Partner, STAX Real Estate</div>
+            <p class="text-[14px] leading-relaxed text-gray-600">
+              Former CEO of a dozen-location gas station operating company. 180+ stations sold. Specializing in NNN gas station brokerage, sale-leasebacks, and investment sales across Florida and the Southeast.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </article>
+
+  <!-- RELATED POSTS -->
+  {relatedPosts.length > 0 && (
+    <section class="py-20 px-6 lg:px-12 bg-gray-50">
+      <div class="max-w-[1200px] mx-auto">
+        <h2 class="font-heading text-2xl font-semibold text-black mb-10">Related Articles</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          {relatedPosts.map((related) => (
+            <a href={`/blog/${related.slug}`} class="group block rounded-xl overflow-hidden border border-black/8 bg-white hover:shadow-lg transition-all">
+              <div class="h-[160px] bg-gradient-to-br from-gray-100 to-gray-50 flex items-center justify-center">
+                <span class="text-gray-300 font-heading text-xl font-semibold">STAX</span>
+              </div>
+              <div class="p-6">
+                <span class="text-[12px] text-gray-500">{formatDate(related.data.date)}</span>
+                <h3 class="font-heading text-lg font-semibold text-black mt-2 group-hover:text-red transition-colors leading-snug">
+                  {related.data.title}
+                </h3>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- CTA -->
+  <section class="py-24 px-6 lg:px-12 bg-black text-white">
+    <div class="max-w-[800px] mx-auto text-center">
+      <h2 class="font-heading text-3xl lg:text-4xl font-semibold mb-6">Have a Deal to Discuss?</h2>
+      <p class="text-lg text-gray-400 mb-10">Whether you're buying, selling, or exploring the gas station and net lease market — we're here to help.</p>
+      <a href="/contact" class="inline-block bg-red text-white font-semibold px-8 py-3.5 rounded-lg hover:bg-red/90 transition-colors">
+        Start a Conversation
+      </a>
+    </div>
+  </section>
+
+</BaseLayout>

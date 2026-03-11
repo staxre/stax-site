@@ -1,0 +1,225 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Contact & Schedule a Call — STAX Real Estate" description="Schedule a call directly with STAX founder Michael Salafia. No associates, no handoffs. Talk principal-to-principal about selling, buying, or investing in gas stations.">
+
+  <!-- HERO -->
+  <section class="pt-[140px] pb-[80px] px-6 lg:px-12">
+    <div class="max-w-[1200px] mx-auto">
+      <div class="text-[11px] font-semibold tracking-[2px] uppercase text-red mb-4">Get in Touch</div>
+      <h1 class="font-heading text-4xl lg:text-[52px] leading-[1.12] font-semibold text-black mb-6 tracking-tight max-w-[900px]">
+        Let's Talk About Your Station.
+      </h1>
+      <p class="text-lg leading-relaxed text-gray-700 mb-9 max-w-[600px]">
+        Whether you're selling a gas station, buying your next one, or exploring a NNN investment — let's have a conversation. No pitch. No pressure. Just a principal-to-principal discussion about your situation.
+      </p>
+    </div>
+  </section>
+
+  <!-- CALENDAR & CONTACT SECTION -->
+  <section class="py-24 px-6 lg:px-12">
+    <div class="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12">
+      <!-- Calendar Embed -->
+      <div class="lg:col-span-2">
+        <div class="bg-white rounded-xl border border-black/8 p-10">
+          <h2 class="font-heading text-2xl font-semibold text-black mb-8">Schedule a Call with Michael</h2>
+
+          <!-- Calendly Inline Embed -->
+          <div class="calendly-inline-widget" data-url="https://calendly.com/michael-staxre?hide_gdpr_banner=1&primary_color=da291c" style="min-width:320px;height:660px;"></div>
+          <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+          <p class="text-[13px] text-gray-600 mt-6 text-center">
+            20-30 minute call. You'll speak directly with Michael — no associates, no handoffs. We'll discuss your situation and determine if working together makes sense.
+          </p>
+        </div>
+
+        <!-- Fallback Contact Form -->
+        <div class="mt-12">
+          <h3 class="font-heading text-xl font-semibold text-black mb-6">Or Send a Message</h3>
+          <form action="https://formspree.io/f/michael@staxre.com" method="POST" class="bg-white rounded-xl border border-black/8 p-10 space-y-6">
+            <input type="hidden" name="_subject" value="New Contact from STAX Website" />
+            <input type="hidden" name="_next" value="/contact?thanks=1" />
+            <input type="text" name="_gotcha" style="display:none" />
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-[13px] font-semibold text-gray-900 uppercase tracking-wider mb-2">
+                  Your Name *
+                </label>
+                <input type="text" name="name" placeholder="John Smith" class="w-full px-5 py-3.5 rounded-lg border border-gray-300 text-[15px] focus:outline-none focus:border-red transition-colors" required />
+              </div>
+              <div>
+                <label class="block text-[13px] font-semibold text-gray-900 uppercase tracking-wider mb-2">
+                  Phone Number *
+                </label>
+                <input type="tel" name="phone" placeholder="(305) 555-0000" class="w-full px-5 py-3.5 rounded-lg border border-gray-300 text-[15px] focus:outline-none focus:border-red transition-colors" required />
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-[13px] font-semibold text-gray-900 uppercase tracking-wider mb-2">
+                Email Address *
+              </label>
+              <input type="email" name="email" placeholder="your@email.com" class="w-full px-5 py-3.5 rounded-lg border border-gray-300 text-[15px] focus:outline-none focus:border-red transition-colors" required />
+            </div>
+
+            <div>
+              <label class="block text-[13px] font-semibold text-gray-900 uppercase tracking-wider mb-2">
+                I'm Interested In *
+              </label>
+              <select name="interest" class="w-full px-5 py-3.5 rounded-lg border border-gray-300 text-[15px] focus:outline-none focus:border-red transition-colors appearance-none bg-white cursor-pointer" required>
+                <option value="">Select one...</option>
+                <option value="selling">Selling my gas station / c-store</option>
+                <option value="buying-operator">Buying a gas station (operator)</option>
+                <option value="buying-investor">NNN investment / bonus depreciation</option>
+                <option value="valuation">Getting a property valuation</option>
+                <option value="1031">1031 exchange guidance</option>
+                <option value="portfolio">Portfolio strategy</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-[13px] font-semibold text-gray-900 uppercase tracking-wider mb-2">
+                Message *
+              </label>
+              <textarea name="message" placeholder="Tell us about your situation — what kind of station, where it's located, your timeline, and what you're looking to accomplish." rows="6" class="w-full px-5 py-3.5 rounded-lg border border-gray-300 text-[15px] focus:outline-none focus:border-red transition-colors resize-none" required></textarea>
+            </div>
+
+            <button type="submit" class="w-full bg-red text-white px-8 py-4 rounded-lg text-[15px] font-semibold hover:bg-red-dark transition-colors">
+              Send Message
+            </button>
+
+            <p class="text-[12px] text-gray-600 text-center">
+              We respond within 24 hours. Usually by phone so we can have a real conversation.
+            </p>
+          </form>
+        </div>
+      </div>
+
+      <!-- Contact Info Sidebar -->
+      <div class="lg:col-span-1">
+        <div class="bg-gray-100 rounded-xl p-10 sticky top-24">
+          <h3 class="font-heading text-xl font-semibold text-black mb-8">Direct to Michael</h3>
+
+          <div class="space-y-8">
+            <!-- Phone -->
+            <div>
+              <p class="text-[11px] font-semibold text-gray-600 uppercase tracking-wider mb-2">Phone</p>
+              <a href="tel:+13052010125" class="text-[18px] font-semibold text-black hover:text-red transition-colors">
+                (305) 201-0125
+              </a>
+              <p class="text-[12px] text-gray-600 mt-2">Call or text anytime.</p>
+            </div>
+
+            <!-- Email -->
+            <div>
+              <p class="text-[11px] font-semibold text-gray-600 uppercase tracking-wider mb-2">Email</p>
+              <a href="mailto:michael@staxre.com" class="text-[18px] font-semibold text-black hover:text-red transition-colors break-all">
+                michael@staxre.com
+              </a>
+              <p class="text-[12px] text-gray-600 mt-2">Direct to Michael. Response within 24 hours.</p>
+            </div>
+
+            <!-- Address -->
+            <div>
+              <p class="text-[11px] font-semibold text-gray-600 uppercase tracking-wider mb-2">Office</p>
+              <address class="text-[15px] text-black not-italic leading-relaxed">
+                STAX Real Estate LLC<br />
+                1111 Lincoln Rd<br />
+                Suite 500<br />
+                Miami Beach, FL 33139
+              </address>
+            </div>
+
+            <!-- Hours -->
+            <div class="pt-4 border-t border-gray-200">
+              <p class="text-[11px] font-semibold text-gray-600 uppercase tracking-wider mb-3">Availability</p>
+              <div class="space-y-1 text-[14px] text-gray-700">
+                <div>Monday – Friday: 9am – 6pm ET</div>
+                <div>Saturday – Sunday: By appointment</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Additional Links -->
+          <div class="mt-10 pt-8 border-t border-gray-200">
+            <p class="text-[13px] text-gray-700 font-semibold mb-4">Not ready to talk yet?</p>
+            <div class="space-y-2">
+              <a href="/valuation" class="block text-[14px] font-semibold text-red hover:text-red-dark transition-colors">
+                → Get a Free Station Valuation
+              </a>
+              <a href="/case-studies" class="block text-[14px] font-semibold text-red hover:text-red-dark transition-colors">
+                → See Our Deal Stories
+              </a>
+              <a href="/deals" class="block text-[14px] font-semibold text-red hover:text-red-dark transition-colors">
+                → Browse Current Deals
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-24 px-6 lg:px-12 bg-gray-100">
+    <div class="max-w-[1200px] mx-auto">
+      <div class="text-[11px] font-semibold tracking-[2px] uppercase text-red mb-4">Common Questions</div>
+      <h2 class="font-heading text-3xl lg:text-[40px] font-semibold text-black mb-12 tracking-tight leading-snug">What to Expect</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-white rounded-xl p-8 border border-black/8">
+          <h3 class="font-heading text-lg font-semibold text-black mb-3">Who will I be talking to?</h3>
+          <p class="text-[15px] leading-relaxed text-gray-700">
+            Michael Salafia — founder, principal broker, and former CEO of a dozen-location gas station operating company. No associates, no junior agents. The person who takes your call is the person who closes your deal.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-xl p-8 border border-black/8">
+          <h3 class="font-heading text-lg font-semibold text-black mb-3">Do I need to be ready to sell or buy?</h3>
+          <p class="text-[15px] leading-relaxed text-gray-700">
+            No. Some clients are actively listing, some are exploring options, some are 12-18 months out. We work with all stages. Let's just talk about what you're thinking.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-xl p-8 border border-black/8">
+          <h3 class="font-heading text-lg font-semibold text-black mb-3">What if my station is outside Florida?</h3>
+          <p class="text-[15px] leading-relaxed text-gray-700">
+            We work nationally, with primary focus on income-tax-free states (FL, TX, NV, TN). If your station is elsewhere, we'll evaluate whether we can add value or refer you to someone who can.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-xl p-8 border border-black/8">
+          <h3 class="font-heading text-lg font-semibold text-black mb-3">What's your commission structure?</h3>
+          <p class="text-[15px] leading-relaxed text-gray-700">
+            Standard brokerage commissions on completed transactions. We'll discuss fees transparently before you commit to anything. No surprises.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-xl p-8 border border-black/8">
+          <h3 class="font-heading text-lg font-semibold text-black mb-3">What makes STAX different from other brokers?</h3>
+          <p class="text-[15px] leading-relaxed text-gray-700">
+            We've owned and operated a dozen gas stations. That firsthand experience changes how we value properties, spot risk, and close deals. Plus we sell to both operators and NNN investors — which means more demand and better pricing.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-xl p-8 border border-black/8">
+          <h3 class="font-heading text-lg font-semibold text-black mb-3">Can I get references?</h3>
+          <p class="text-[15px] leading-relaxed text-gray-700">
+            Absolutely. We'll connect you with operators and investors from recent closings. 180+ gas stations sold — there's no shortage of people to talk to.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="bg-gradient-to-br from-black to-[#1a1a2e] py-20 px-6 lg:px-12 text-center">
+    <div class="max-w-[640px] mx-auto">
+      <h2 class="font-heading text-3xl lg:text-4xl font-semibold text-white mb-4">Let's Start a Conversation</h2>
+      <p class="text-[17px] leading-relaxed text-white/60 mb-8">Schedule a call above, send a message, or call (305) 201-0125 directly. We look forward to hearing about your situation.</p>
+    </div>
+  </section>
+
+</BaseLayout>

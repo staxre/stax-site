@@ -1,0 +1,266 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="What's Your Station Worth? — Free Gas Station Valuation | STAX Real Estate" description="Get a free gas station valuation based on real operator metrics — gallonage, margin, brand, location, and lease terms. Not just a cap rate. Response within 24 hours.">
+
+  <!-- HERO -->
+  <section class="pt-[140px] pb-[80px] px-6 lg:px-12">
+    <div class="max-w-[1200px] mx-auto">
+      <div class="text-[11px] font-semibold tracking-[2px] uppercase text-red mb-4">Free Valuation</div>
+      <h1 class="font-heading text-4xl lg:text-[52px] leading-[1.12] font-semibold text-black mb-6 tracking-tight max-w-[900px]">
+        What's Your Station Worth? More Than You Think.
+      </h1>
+      <p class="text-lg leading-relaxed text-gray-700 mb-2 max-w-[600px]">
+        Most brokers value gas stations on cap rate alone. We look at gallonage trends, inside sales margin, brand contract value, environmental clearance, and buyer demand from both operators and NNN investors. That dual perspective usually means a higher number.
+      </p>
+      <p class="text-lg leading-relaxed text-red font-semibold max-w-[600px] mt-4">
+        24-hour turnaround. No obligation. Operator-level analysis.
+      </p>
+    </div>
+  </section>
+
+  <!-- VALUATION FORM SECTION -->
+  <section class="py-24 px-6 lg:px-12">
+    <div class="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12">
+      <!-- Form -->
+      <div class="lg:col-span-2">
+        <div class="bg-white rounded-xl border border-black/8 p-10">
+          <h2 class="font-heading text-2xl font-semibold text-black mb-8">Tell Us About Your Station</h2>
+          <form action="https://formspree.io/f/michael@staxre.com" method="POST" class="space-y-6">
+            <input type="hidden" name="_subject" value="New Valuation Request from STAX Website" />
+            <input type="hidden" name="_next" value="/valuation?thanks=1" />
+            <input type="text" name="_gotcha" style="display:none" />
+            <!-- Property Type -->
+            <div>
+              <label class="block text-[13px] font-semibold text-gray-900 uppercase tracking-wider mb-2">
+                Property Type *
+              </label>
+              <select name="property_type" class="w-full px-5 py-3.5 rounded-lg border border-gray-300 text-[15px] focus:outline-none focus:border-red transition-colors appearance-none bg-white cursor-pointer" required>
+                <option value="">Select property type...</option>
+                <option value="gas-cstore">Gas Station & C-Store</option>
+                <option value="portfolio">Multi-site Portfolio</option>
+                <option value="other-nnn">Other NNN Property</option>
+              </select>
+            </div>
+
+            <!-- Fuel Brand -->
+            <div>
+              <label class="block text-[13px] font-semibold text-gray-900 uppercase tracking-wider mb-2">
+                Fuel Brand
+              </label>
+              <select name="fuel_brand" class="w-full px-5 py-3.5 rounded-lg border border-gray-300 text-[15px] focus:outline-none focus:border-red transition-colors appearance-none bg-white cursor-pointer">
+                <option value="">Select brand...</option>
+                <option value="shell">Shell</option>
+                <option value="bp">BP</option>
+                <option value="chevron">Chevron</option>
+                <option value="exxon">ExxonMobil</option>
+                <option value="sunoco">Sunoco</option>
+                <option value="marathon">Marathon</option>
+                <option value="circle-k">Circle K</option>
+                <option value="racetrac">RaceTrac</option>
+                <option value="murphy">Murphy USA</option>
+                <option value="unbranded">Unbranded</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <!-- Location -->
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="block text-[13px] font-semibold text-gray-900 uppercase tracking-wider mb-2">
+                  City *
+                </label>
+                <input type="text" name="city" placeholder="e.g., Miami" class="w-full px-5 py-3.5 rounded-lg border border-gray-300 text-[15px] focus:outline-none focus:border-red transition-colors" required />
+              </div>
+              <div>
+                <label class="block text-[13px] font-semibold text-gray-900 uppercase tracking-wider mb-2">
+                  State *
+                </label>
+                <input type="text" name="state" placeholder="e.g., FL" class="w-full px-5 py-3.5 rounded-lg border border-gray-300 text-[15px] focus:outline-none focus:border-red transition-colors" maxlength="2" required />
+              </div>
+            </div>
+
+            <!-- Monthly Gallonage -->
+            <div>
+              <label class="block text-[13px] font-semibold text-gray-900 uppercase tracking-wider mb-2">
+                Average Monthly Gallonage
+              </label>
+              <input type="number" name="monthly_gallonage" placeholder="e.g., 120000" class="w-full px-5 py-3.5 rounded-lg border border-gray-300 text-[15px] focus:outline-none focus:border-red transition-colors" />
+              <p class="text-[12px] text-gray-500 mt-1">Total gallons sold per month across all fuel grades</p>
+            </div>
+
+            <!-- Average Monthly Inside Sales -->
+            <div>
+              <label class="block text-[13px] font-semibold text-gray-900 uppercase tracking-wider mb-2">
+                Average Monthly Inside Sales
+              </label>
+              <div class="relative">
+                <span class="absolute left-5 top-3.5 text-gray-500 text-[15px]">$</span>
+                <input type="number" name="monthly_inside_sales" placeholder="0" class="w-full px-5 py-3.5 pl-8 rounded-lg border border-gray-300 text-[15px] focus:outline-none focus:border-red transition-colors" />
+              </div>
+              <p class="text-[12px] text-gray-500 mt-1">Total convenience store / inside sales per month</p>
+            </div>
+
+            <!-- NOI / EBITDA -->
+            <div>
+              <label class="block text-[13px] font-semibold text-gray-900 uppercase tracking-wider mb-2">
+                NOI or EBITDA
+              </label>
+              <div class="relative">
+                <span class="absolute left-5 top-3.5 text-gray-500 text-[15px]">$</span>
+                <input type="number" name="noi_ebitda" placeholder="0" class="w-full px-5 py-3.5 pl-8 rounded-lg border border-gray-300 text-[15px] focus:outline-none focus:border-red transition-colors" />
+              </div>
+              <p class="text-[12px] text-gray-500 mt-1">Annual net operating income or EBITDA</p>
+            </div>
+
+            <!-- Lease Terms -->
+            <div>
+              <label class="block text-[13px] font-semibold text-gray-900 uppercase tracking-wider mb-2">
+                Ownership / Lease Structure
+              </label>
+              <select name="ownership_structure" class="w-full px-5 py-3.5 rounded-lg border border-gray-300 text-[15px] focus:outline-none focus:border-red transition-colors appearance-none bg-white cursor-pointer">
+                <option value="">Select structure...</option>
+                <option value="own-operate">I own and operate the site</option>
+                <option value="own-dealer">I own and run the gas with a dealer in the c-store</option>
+                <option value="nnn">NNN Lease in Place</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-gray-100">
+              <div>
+                <label class="block text-[13px] font-semibold text-gray-900 uppercase tracking-wider mb-2">
+                  Your Name *
+                </label>
+                <input type="text" name="name" placeholder="John Smith" class="w-full px-5 py-3.5 rounded-lg border border-gray-300 text-[15px] focus:outline-none focus:border-red transition-colors" required />
+              </div>
+              <div>
+                <label class="block text-[13px] font-semibold text-gray-900 uppercase tracking-wider mb-2">
+                  Phone Number *
+                </label>
+                <input type="tel" name="phone" placeholder="(305) 555-0000" class="w-full px-5 py-3.5 rounded-lg border border-gray-300 text-[15px] focus:outline-none focus:border-red transition-colors" required />
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-[13px] font-semibold text-gray-900 uppercase tracking-wider mb-2">
+                Email Address *
+              </label>
+              <input type="email" name="email" placeholder="your@email.com" class="w-full px-5 py-3.5 rounded-lg border border-gray-300 text-[15px] focus:outline-none focus:border-red transition-colors" required />
+            </div>
+
+            <!-- Additional Notes -->
+            <div>
+              <label class="block text-[13px] font-semibold text-gray-900 uppercase tracking-wider mb-2">
+                Additional Details (Optional)
+              </label>
+              <textarea name="details" placeholder="Brand contract expiration, recent capex, environmental status, car wash revenue, number of MPDs, etc." rows="4" class="w-full px-5 py-3.5 rounded-lg border border-gray-300 text-[15px] focus:outline-none focus:border-red transition-colors resize-none"></textarea>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" class="w-full bg-red text-white px-8 py-4 rounded-lg text-[15px] font-semibold hover:bg-red-dark transition-colors mt-4">
+              Get Your Free Valuation
+            </button>
+
+            <p class="text-[12px] text-gray-600 text-center">
+              Confidential. We'll review your submission and send a preliminary valuation within 24 hours.
+            </p>
+          </form>
+        </div>
+      </div>
+
+      <!-- Benefits Sidebar -->
+      <div class="lg:col-span-1">
+        <div class="bg-gray-100 rounded-xl p-10 sticky top-24">
+          <h3 class="font-heading text-xl font-semibold text-black mb-6">Why Our Valuations Are Different</h3>
+          <div class="space-y-5">
+            <div class="flex gap-3">
+              <div class="text-red text-xl flex-shrink-0">✓</div>
+              <div>
+                <p class="text-[14px] font-semibold text-black">Operator-Level Analysis</p>
+                <p class="text-[13px] text-gray-700 mt-1">We don't just pull cap rate comps. We evaluate your station the way an operator would — because we've run a dozen locations as CEO of an operating company.</p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <div class="text-red text-xl flex-shrink-0">✓</div>
+              <div>
+                <p class="text-[14px] font-semibold text-black">Dual Buyer Perspective</p>
+                <p class="text-[13px] text-gray-700 mt-1">We know what operators will pay based on operational upside AND what NNN investors will pay for the tax shelter. That dual demand often pushes value higher than a single-market valuation.</p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <div class="text-red text-xl flex-shrink-0">✓</div>
+              <div>
+                <p class="text-[14px] font-semibold text-black">Tax Strategy Included</p>
+                <p class="text-[13px] text-gray-700 mt-1">Your valuation includes preliminary guidance on bonus depreciation eligibility, 1031 exchange timing, and how deal structure affects your net proceeds.</p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <div class="text-red text-xl flex-shrink-0">✓</div>
+              <div>
+                <p class="text-[14px] font-semibold text-black">No Obligation</p>
+                <p class="text-[13px] text-gray-700 mt-1">This is a free preliminary valuation. You're under no obligation to list or transact with us. Use it to make an informed decision.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Track Record Mini -->
+          <div class="mt-8 pt-6 border-t border-gray-200">
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <div class="font-heading text-2xl font-bold text-red">180+</div>
+                <div class="text-[11px] text-gray-500 uppercase tracking-wider">Stations Sold</div>
+              </div>
+              <div>
+                <div class="font-heading text-2xl font-bold text-red">$525M+</div>
+                <div class="text-[11px] text-gray-500 uppercase tracking-wider">Volume</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT HAPPENS NEXT -->
+  <section class="py-24 px-6 lg:px-12 bg-gray-100">
+    <div class="max-w-[1200px] mx-auto">
+      <div class="text-[11px] font-semibold tracking-[2px] uppercase text-red mb-4">Process</div>
+      <h2 class="font-heading text-3xl lg:text-[40px] font-semibold text-black mb-5 tracking-tight leading-snug">What Happens After You Submit</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+        <div class="bg-white rounded-xl p-8 border border-black/8">
+          <div class="w-10 h-10 rounded-full bg-red text-white flex items-center justify-center font-heading font-bold text-sm mb-5">1</div>
+          <h3 class="font-heading text-xl font-semibold text-black mb-3">You Submit Your Station Details</h3>
+          <p class="text-[15px] leading-relaxed text-gray-700">Property type, gallonage, brand, financials. Takes about 5 minutes. The more detail you provide, the more accurate our analysis.</p>
+        </div>
+
+        <div class="bg-white rounded-xl p-8 border border-black/8">
+          <div class="w-10 h-10 rounded-full bg-red text-white flex items-center justify-center font-heading font-bold text-sm mb-5">2</div>
+          <h3 class="font-heading text-xl font-semibold text-black mb-3">We Run an Operator-Level Analysis</h3>
+          <p class="text-[15px] leading-relaxed text-gray-700">We compare against recent gas station comps, evaluate operational metrics, assess the NNN investor appeal, and factor in tax strategy. Turnaround: 18-24 hours.</p>
+        </div>
+
+        <div class="bg-white rounded-xl p-8 border border-black/8">
+          <div class="w-10 h-10 rounded-full bg-red text-white flex items-center justify-center font-heading font-bold text-sm mb-5">3</div>
+          <h3 class="font-heading text-xl font-semibold text-black mb-3">You Get a Valuation Range</h3>
+          <p class="text-[15px] leading-relaxed text-gray-700">A preliminary valuation range with market context, comparable transactions, and next-step recommendations. No call unless you request one.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-gradient-to-br from-black to-[#1a1a2e] py-20 px-6 lg:px-12 text-center">
+    <div class="max-w-[640px] mx-auto">
+      <h2 class="font-heading text-3xl lg:text-4xl font-semibold text-white mb-4">Prefer to talk first?</h2>
+      <p class="text-[17px] leading-relaxed text-white/60 mb-8">Some situations need a conversation before a valuation. Schedule a call and let's discuss your station, your timeline, and what you're trying to accomplish.</p>
+      <a href="/contact" class="inline-flex items-center gap-2.5 bg-red text-white px-9 py-4 rounded-md text-[15px] font-semibold hover:bg-red-dark transition-colors">
+        Schedule a Call
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-[18px] h-[18px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+    </div>
+  </section>
+
+</BaseLayout>
