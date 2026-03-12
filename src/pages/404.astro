@@ -1,0 +1,35 @@
+---
+import '../styles/global.css';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page Not Found — STAX Real Estate</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body class="bg-white min-h-screen flex flex-col">
+  <nav class="bg-white border-b border-black/5 h-[72px] flex items-center px-6 lg:px-12">
+    <a href="/" class="flex items-center">
+      <img src="/images/stax-logo-black.svg" alt="STAX Real Estate" class="h-8 object-contain" />
+    </a>
+  </nav>
+
+  <main class="flex-1 flex items-center justify-center px-6">
+    <div class="text-center max-w-md">
+      <p class="text-sm font-semibold tracking-wider uppercase text-red-600 mb-3">404</p>
+      <h1 class="font-heading text-4xl md:text-5xl font-bold text-gray-900 mb-4" style="font-family: 'Playfair Display', serif;">Page Not Found</h1>
+      <p class="text-gray-500 text-lg mb-8 leading-relaxed">The page you're looking for doesn't exist or has been moved.</p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="/" class="bg-black text-white text-sm font-semibold tracking-wide px-8 py-3 rounded-md hover:bg-gray-900 transition-colors uppercase">Back to Home</a>
+        <a href="/deals" class="border border-black/15 text-sm font-semibold tracking-wide px-8 py-3 rounded-md hover:bg-gray-50 transition-colors uppercase">View Deals</a>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

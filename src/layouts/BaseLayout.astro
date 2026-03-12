@@ -9,6 +9,8 @@ interface Props {
 
 const { title, description = "STAX Real Estate — Founded by the former CEO of a dozen-location gas station operating company. 180+ stations sold. Bonus depreciation, 1031 exchanges, and off-market deal flow from someone who's owned and operated the business.", ogImage = "/images/hero-shell-station.jpg" } = Astro.props;
 const canonicalUrl = Astro.url.href;
+const siteUrl = 'https://staxre.com';
+const absoluteOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
 ---
 
 <!DOCTYPE html>
@@ -28,16 +30,56 @@ const canonicalUrl = Astro.url.href;
   <meta property="og:type" content="website" />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
-  <meta property="og:image" content={ogImage} />
+  <meta property="og:image" content={absoluteOgImage} />
   <meta property="og:url" content={canonicalUrl} />
   <meta property="og:site_name" content="STAX Real Estate" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
-  <meta name="twitter:image" content={ogImage} />
+  <meta name="twitter:image" content={absoluteOgImage} />
 
   <!-- Canonical -->
   <link rel="canonical" href={canonicalUrl} />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "RealEstateAgent",
+    "name": "STAX Real Estate",
+    "description": "NNN net lease gas station brokerage. 180+ stations sold. Specializing in bonus depreciation, 1031 exchanges, and off-market deal flow.",
+    "url": "https://staxre.com",
+    "logo": "https://staxre.com/images/stax-logo-black.svg",
+    "image": "https://staxre.com/images/hero-shell-station.jpg",
+    "telephone": "+1-305-201-0125",
+    "email": "michael@staxre.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "1111 Lincoln Rd Suite 500",
+      "addressLocality": "Miami Beach",
+      "addressRegion": "FL",
+      "postalCode": "33139",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 25.7907,
+      "longitude": -80.1400
+    },
+    "founder": {
+      "@type": "Person",
+      "name": "Michael Salafia",
+      "jobTitle": "Founder & Principal Broker"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "United States"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/company/stax-real-estate"
+    ]
+  }
+  </script>
 
   <!-- Google Analytics (GA4) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-6D6LJ0Y076"></script>
