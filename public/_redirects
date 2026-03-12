@@ -1,0 +1,58 @@
+# Old WordPress blog posts (root-level) → New Astro blog posts (/blog/slug)
+/5-things-you-need-to-know-to-create-a-successful-career-buying-rehabbing-and-selling-properties/ /blog/5-things-successful-career-buying-rehabbing-selling 301
+/5-things-you-need-to-know-to-create-a-successful-career-buying-rehabbing-and-selling-properties /blog/5-things-successful-career-buying-rehabbing-selling 301
+/ai-in-commercial-real-estate-for-value-add-investments/ /blog/ai-commercial-real-estate-value-add-investments 301
+/ai-in-commercial-real-estate-for-value-add-investments /blog/ai-commercial-real-estate-value-add-investments 301
+/bonus-depreciation-in-gas-station-commercial-real-estate-offers-significant-savings/ /blog/bonus-depreciation-gas-station-real-estate 301
+/bonus-depreciation-in-gas-station-commercial-real-estate-offers-significant-savings /blog/bonus-depreciation-gas-station-real-estate 301
+/explain-the-process-of-buying-or-selling-a-commercial-property-step-by-step/ /blog/buying-selling-commercial-property-step-by-step 301
+/explain-the-process-of-buying-or-selling-a-commercial-property-step-by-step /blog/buying-selling-commercial-property-step-by-step 301
+/how-do-i-choose-the-right-real-estate-agent/ /blog/choose-right-real-estate-agent 301
+/how-do-i-choose-the-right-real-estate-agent /blog/choose-right-real-estate-agent 301
+/examining-compliance-and-regulations-in-gas-station-real-estate-from-a-legal-perspective/ /blog/compliance-regulations-gas-station-real-estate 301
+/examining-compliance-and-regulations-in-gas-station-real-estate-from-a-legal-perspective /blog/compliance-regulations-gas-station-real-estate 301
+/how-to-earn-10-to-20-returns-with-alternative-investments/ /blog/earn-10-to-20-returns-alternative-investments 301
+/how-to-earn-10-to-20-returns-with-alternative-investments /blog/earn-10-to-20-returns-alternative-investments 301
+/florida-trend-x-stax/ /blog/florida-trend-stax-clean-energy 301
+/florida-trend-x-stax /blog/florida-trend-stax-clean-energy 301
+/founder-bridges-the-gap-between-commercial-real-estate-and-tenant-relationships/ /blog/founder-bridges-gap-commercial-real-estate-tenant-relationships 301
+/founder-bridges-the-gap-between-commercial-real-estate-and-tenant-relationships /blog/founder-bridges-gap-commercial-real-estate-tenant-relationships 301
+/exploring-funding-choices-for-gas-station-purchases-and-expansion/ /blog/funding-choices-gas-station-purchases-expansion 301
+/exploring-funding-choices-for-gas-station-purchases-and-expansion /blog/funding-choices-gas-station-purchases-expansion 301
+/the-future-of-gas-stations-convenience-stores-fully-occupied-podcast/ /blog/future-gas-stations-convenience-stores-fully-occupied 301
+/the-future-of-gas-stations-convenience-stores-fully-occupied-podcast /blog/future-gas-stations-convenience-stores-fully-occupied 301
+/stax-real-estates-impressive-track-record-and-rave-customer-reviews/ /blog/impressive-track-record-customer-reviews 301
+/stax-real-estates-impressive-track-record-and-rave-customer-reviews /blog/impressive-track-record-customer-reviews 301
+/how-will-interest-rate-cuts-impact-the-commercial-real-estate-market/ /blog/interest-rate-cuts-impact-commercial-real-estate 301
+/how-will-interest-rate-cuts-impact-the-commercial-real-estate-market /blog/interest-rate-cuts-impact-commercial-real-estate 301
+/how-can-i-maximize-the-sale-price-of-my-property/ /blog/maximize-sale-price-property 301
+/how-can-i-maximize-the-sale-price-of-my-property /blog/maximize-sale-price-property 301
+/net-lease-capital-markets-update-december-2023/ /blog/net-lease-capital-markets-update-december-2023 301
+/net-lease-capital-markets-update-december-2023 /blog/net-lease-capital-markets-update-december-2023 301
+/what-are-the-pros-and-cons-of-investing-in-commercial-real-estate/ /blog/pros-cons-investing-commercial-real-estate 301
+/what-are-the-pros-and-cons-of-investing-in-commercial-real-estate /blog/pros-cons-investing-commercial-real-estate 301
+/the-real-deal-reports-on-stax-equity-lease-activity-in-miami-beach/ /blog/real-deal-stax-equity-miami-beach 301
+/the-real-deal-reports-on-stax-equity-lease-activity-in-miami-beach /blog/real-deal-stax-equity-miami-beach 301
+/selling-your-commercial-property-successfully-in-a-competitive-market/ /blog/selling-commercial-property-competitive-market 301
+/selling-your-commercial-property-successfully-in-a-competitive-market /blog/selling-commercial-property-competitive-market 301
+/shrimp-tank-how-to-capitalize-on-tax-savings-with-michael-salafia/ /blog/shrimp-tank-podcast-tax-savings 301
+/shrimp-tank-how-to-capitalize-on-tax-savings-with-michael-salafia /blog/shrimp-tank-podcast-tax-savings 301
+/stax-closes-7-5m-chevron-gas-station-in-winter-garden-florida/ /blog/stax-closes-7-5m-chevron-winter-garden-florida 301
+/stax-closes-7-5m-chevron-gas-station-in-winter-garden-florida /blog/stax-closes-7-5m-chevron-winter-garden-florida 301
+/stax-equity-exhibiting-at-icsc-las-vegas-2023/ /blog/stax-equity-icsc-las-vegas-2023 301
+/stax-equity-exhibiting-at-icsc-las-vegas-2023 /blog/stax-equity-icsc-las-vegas-2023 301
+/the-promise-of-stax-real-estate-to-boost-the-us-retail-sector/ /blog/stax-promise-boost-us-retail-sector 301
+/the-promise-of-stax-real-estate-to-boost-the-us-retail-sector /blog/stax-promise-boost-us-retail-sector 301
+/top-10-cities-forecasted-to-lead-population-growth-in-2024/ /blog/top-10-cities-population-growth-2024 301
+/top-10-cities-forecasted-to-lead-population-growth-in-2024 /blog/top-10-cities-population-growth-2024 301
+
+# Old WordPress page redirects
+/investors/ /buyers 301
+/investors /buyers 301
+/landlords/ /sellers 301
+/landlords /sellers 301
+
+# Old WordPress pagination
+/blog/page/2/ /blog 301
+/blog/page/2 /blog 301
+/blog/page/* /blog 301
