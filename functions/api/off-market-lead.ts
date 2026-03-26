@@ -88,7 +88,6 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         ``,
         `*Submitted via staxre.com/off-market*`,
       ].join('\n'),
-      tags: ['off-market-nda', propertyTag],
       priority: 2, // High
     };
 
@@ -104,8 +103,10 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       }
     );
 
-    if (!clickupRes.ok) {
-      console.error('ClickUp error:', await clickupRes.text());
+    const clickupOk = clickupRes.ok;
+    const clickupText = await clickupRes.text();
+    if (!clickupOk) {
+      console.error('ClickUp error:', clickupRes.status, clickupText);
     }
 
     // --- 2. Email notification to Michael ---
@@ -183,7 +184,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       }),
     });
 
-    return new Response(JSON.stringify({ success: true }), {
+    return new Response(JSON.stringify({ success: true, clickup: clickupOk, clickupDebug: clickupOk ? 'ok' : clickupText }), {
       status: 200,
       headers: { 'Content-Type': 'application/json', ...corsHeaders },
     });

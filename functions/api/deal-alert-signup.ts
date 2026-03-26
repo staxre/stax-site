@@ -52,7 +52,6 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         ``,
         `*Add to email list for new off-market opportunities.*`,
       ].join('\n'),
-      tags: ['deal-alert-signup'],
       priority: 3, // Normal
     };
 
@@ -69,7 +68,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     );
 
     if (!clickupRes.ok) {
-      console.error('ClickUp error:', await clickupRes.text());
+      console.error('ClickUp error:', clickupRes.status, await clickupRes.text());
     }
 
     // --- 2. Welcome email to subscriber ---
