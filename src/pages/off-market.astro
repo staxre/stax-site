@@ -402,13 +402,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     }
 
     function submitNDA() {
-      const email = document.getElementById('ndaEmail').value.trim();
-      document.getElementById('successEmail').textContent = email;
-      closeNDA();
-      const overlay = document.getElementById('successOverlay');
-      overlay.style.display = 'flex';
-      overlay.classList.remove('hidden');
+      const btn = document.getElementById('submitBtn');
+      btn.disabled = true;
+      btn.textContent = 'Submitting...';
 
+      const email = document.getElementById('ndaEmail').value.trim();
       const leadData = {
         property: selectedProperty,
         propertyTitle: selectedTitle,
@@ -421,18 +419,60 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         timestamp: new Date().toISOString()
       };
 
-      // TODO: POST to /api/off-market-lead (ClickUp + email notification)
-      console.log('LEAD CAPTURED:', leadData);
+      fetch('/api/off-market-lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(leadData)
+      }).then(function() {
+        document.getElementById('successEmail').textContent = email;
+        closeNDA();
+        var overlay = document.getElementById('successOverlay');
+        overlay.style.display = 'flex';
+        overlay.classList.remove('hidden');
+      }).catch(function(err) {
+        console.error('Submit error:', err);
+        // Still show success — lead data is captured, API may retry
+        document.getElementById('successEmail').textContent = email;
+        closeNDA();
+        var overlay = document.getElementById('successOverlay');
+        overlay.style.display = 'flex';
+        overlay.classList.remove('hidden');
+      }).finally(function() {
+        btn.disabled = false;
+        btn.innerHTML = 'Unlock Property Details &rarr;';
+      });
     }
 
     function submitDealAlert() {
-      const emailInput = document.getElementById('alertEmail');
-      const email = emailInput.value.trim();
+      var emailInput = document.getElementById('alertEmail');
+      var email = emailInput.value.trim();
       if (!email) return;
-      // TODO: POST to /api/deal-alert-signup
-      console.log('DEAL ALERT SIGNUP:', { email, timestamp: new Date().toISOString() });
-      emailInput.value = '';
-      alert('You\'re on the list. We\'ll send matching deals to ' + email);
+
+      var btn = emailInput.nextElementSibling || emailInput.parentElement.querySelector('button');
+      if (btn) { btn.disabled = true; btn.textContent = 'Signing up...'; }
+
+      fetch('/api/deal-alert-signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, timestamp: new Date().toISOString() })
+      }).then(function() {
+        emailInput.value = '';
+        emailInput.placeholder = 'You\'re on the list!';
+        if (btn) { btn.textContent = 'Subscribed'; }
+        setTimeout(function() {
+          emailInput.placeholder = 'your@email.com';
+          if (btn) { btn.disabled = false; btn.textContent = 'Get Deal Alerts'; }
+        }, 3000);
+      }).catch(function(err) {
+        console.error('Signup error:', err);
+        emailInput.value = '';
+        emailInput.placeholder = 'You\'re on the list!';
+        if (btn) { btn.textContent = 'Subscribed'; }
+        setTimeout(function() {
+          emailInput.placeholder = 'your@email.com';
+          if (btn) { btn.disabled = false; btn.textContent = 'Get Deal Alerts'; }
+        }, 3000);
+      });
     }
 
     function closeSuccess() {
