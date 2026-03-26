@@ -184,7 +184,8 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       }),
     });
 
-    return new Response(JSON.stringify({ success: true, clickup: clickupOk, clickupDebug: clickupOk ? 'ok' : clickupText }), {
+    const keyPreview = context.env.CLICKUP_API_KEY ? context.env.CLICKUP_API_KEY.substring(0, 8) + '...' : 'MISSING';
+    return new Response(JSON.stringify({ success: true, clickup: clickupOk, clickupDebug: clickupOk ? 'ok' : clickupText, keyPreview }), {
       status: 200,
       headers: { 'Content-Type': 'application/json', ...corsHeaders },
     });
