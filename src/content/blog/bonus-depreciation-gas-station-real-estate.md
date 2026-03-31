@@ -7,6 +7,8 @@ excerpt: "How gas station investors can use bonus depreciation to immediately de
 image: "/images/blog/bonus-depreciation.jpg"
 ---
 
+> **Updated for 2026:** With the passage of the One Big Beautiful Bill Act restoring 100% bonus depreciation permanently, this topic has evolved significantly. **[Read our complete 2026 Gas Station Tax Strategy Guide →](/blog/gas-station-tax-hack-bonus-depreciation-2026)** for the latest on the 15-year rule, the IRS Retail Motor Fuel Outlet tests, leverage strategies, and a full financial scenario.
+
 As an investor in the commercial real estate market, you're always on the lookout for opportunities to maximize returns and reduce tax liabilities. Gas station commercial real estate is an excellent option for achieving both. Here's how bonus depreciation works — and why it's particularly powerful for fuel retail assets.
 
 ## What Is Bonus Depreciation?
