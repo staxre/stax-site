@@ -96,8 +96,14 @@ const relatedPosts = allPosts
         <div class="grid md:grid-cols-3 gap-8">
           {relatedPosts.map((related) => (
             <a href={`/blog/${related.slug}`} class="group block rounded-xl overflow-hidden border border-black/8 bg-white hover:shadow-lg transition-all">
-              <div class="h-[160px] bg-gradient-to-br from-gray-100 to-gray-50 flex items-center justify-center">
-                <span class="text-gray-300 font-heading text-xl font-semibold">STAX</span>
+              <div class="h-[160px] bg-gray-100 overflow-hidden">
+                {related.data.image ? (
+                  <img src={related.data.image} alt={related.data.title} class="w-full h-full object-cover" />
+                ) : (
+                  <div class="w-full h-full bg-gradient-to-br from-gray-100 to-gray-50 flex items-center justify-center">
+                    <span class="text-gray-300 font-heading text-xl font-semibold">STAX</span>
+                  </div>
+                )}
               </div>
               <div class="p-6">
                 <span class="text-[12px] text-gray-500">{formatDate(related.data.date)}</span>

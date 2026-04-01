@@ -32,10 +32,14 @@ function formatDate(date: Date) {
       <div class="max-w-[1200px] mx-auto">
         <a href={`/blog/${posts[0].slug}`} class="block group">
           <div class="flex flex-col lg:flex-row rounded-xl overflow-hidden border border-black/8 bg-white hover:shadow-lg transition-all">
-            <div class="w-full lg:w-[500px] h-[300px] lg:h-auto shrink-0 bg-gray-100 flex items-center justify-center">
-              <div class="w-full h-full bg-gradient-to-br from-red/10 to-red/5 flex items-center justify-center">
-                <span class="text-red font-heading text-2xl font-semibold opacity-40">STAX</span>
-              </div>
+            <div class="w-full lg:w-[500px] h-[300px] lg:h-auto shrink-0 bg-gray-100 overflow-hidden">
+              {posts[0].data.image ? (
+                <img src={posts[0].data.image} alt={posts[0].data.title} class="w-full h-full object-cover" />
+              ) : (
+                <div class="w-full h-full bg-gradient-to-br from-red/10 to-red/5 flex items-center justify-center">
+                  <span class="text-red font-heading text-2xl font-semibold opacity-40">STAX</span>
+                </div>
+              )}
             </div>
             <div class="p-10 flex-1">
               <div class="flex items-center gap-3 mb-4">
@@ -63,8 +67,14 @@ function formatDate(date: Date) {
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {posts.slice(1).map((post) => (
           <a href={`/blog/${post.slug}`} class="group block rounded-xl overflow-hidden border border-black/8 bg-white hover:shadow-lg transition-all">
-            <div class="h-[180px] bg-gradient-to-br from-gray-100 to-gray-50 flex items-center justify-center">
-              <span class="text-gray-300 font-heading text-xl font-semibold">STAX</span>
+            <div class="h-[180px] bg-gray-100 overflow-hidden">
+              {post.data.image ? (
+                <img src={post.data.image} alt={post.data.title} class="w-full h-full object-cover" />
+              ) : (
+                <div class="w-full h-full bg-gradient-to-br from-gray-100 to-gray-50 flex items-center justify-center">
+                  <span class="text-gray-300 font-heading text-xl font-semibold">STAX</span>
+                </div>
+              )}
             </div>
             <div class="p-6">
               <div class="flex items-center gap-3 mb-3">
