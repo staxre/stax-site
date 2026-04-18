@@ -163,7 +163,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
           <strong>Michael Salafia</strong><br/>
           Founder &amp; Principal Broker<br/>
           STAX Real Estate<br/>
-          <a href="tel:+13052010125" style="color: #DA291C;">(305) 201-0125</a> &middot;
+          <a href="tel:+13217700222" style="color: #DA291C;">(321) 770-0222</a> &middot;
           <a href="mailto:michael@staxre.com" style="color: #DA291C;">michael@staxre.com</a>
         </p>
       </div>
