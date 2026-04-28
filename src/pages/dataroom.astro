@@ -1,7 +1,5 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-
-const { slug } = Astro.params;
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="Confidential Dataroom — STAX Real Estate" description="Secure access to confidential property data.">
@@ -33,9 +31,7 @@ const { slug } = Astro.params;
         <p class="text-[13px] text-gray-400 mb-8">Do not share, forward, or distribute any materials from this dataroom.</p>
 
         <!-- File list -->
-        <div class="space-y-3" id="file-list">
-          <!-- Files injected here -->
-        </div>
+        <div class="space-y-3" id="file-list"></div>
 
         <div class="mt-10 pt-8 border-t border-gray-100">
           <p class="text-[13px] text-gray-400 leading-relaxed">All materials in this dataroom are provided under the terms of your signed Non-Disclosure and Confidentiality Agreement with STAX Real Estate. Unauthorized disclosure, reproduction, or distribution is strictly prohibited and may result in legal action.</p>
@@ -51,22 +47,23 @@ const { slug } = Astro.params;
     </div>
   </section>
 
-  <script is:inline define:vars={{ slug }}>
+  <script is:inline>
     const DEALNGN_BASE = 'https://dealngn.com';
 
     async function init() {
-      const params = new URLSearchParams(window.location.search);
-      const token = params.get('token');
+      var params = new URLSearchParams(window.location.search);
+      var token = params.get('token');
+      var slug = params.get('deal');
 
-      if (!token) {
-        showDenied('No access token provided.');
+      if (!token || !slug) {
+        showDenied('Missing access token or deal identifier.');
         return;
       }
 
       try {
         // Validate token
-        const validateRes = await fetch(`${DEALNGN_BASE}/api/nda/dataroom/${slug}/validate?token=${encodeURIComponent(token)}`);
-        const validateData = await validateRes.json();
+        var validateRes = await fetch(DEALNGN_BASE + '/api/nda/dataroom/' + slug + '/validate?token=' + encodeURIComponent(token));
+        var validateData = await validateRes.json();
 
         if (!validateData.valid) {
           showDenied(validateData.error || 'Access denied.');
@@ -74,38 +71,32 @@ const { slug } = Astro.params;
         }
 
         // Load files
-        const filesRes = await fetch(`${DEALNGN_BASE}/api/nda/dataroom/${slug}/files?token=${encodeURIComponent(token)}`);
-        const filesData = await filesRes.json();
+        var filesRes = await fetch(DEALNGN_BASE + '/api/nda/dataroom/' + slug + '/files?token=' + encodeURIComponent(token));
+        var filesData = await filesRes.json();
 
         // Render
         document.getElementById('dr-title').textContent = validateData.property_title;
         document.getElementById('dr-buyer').textContent = validateData.buyer_name;
 
-        const fileList = document.getElementById('file-list');
+        var fileList = document.getElementById('file-list');
 
         if (filesData.files && filesData.files.length > 0) {
           fileList.innerHTML = filesData.files.map(function(f) {
-            const icon = getFileIcon(f.file_type);
-            return `
-              <a href="${f.download_url}" target="_blank" class="flex items-center gap-4 p-5 rounded-xl border border-black/8 bg-white hover:shadow-md hover:border-red/20 transition-all group">
-                <div class="w-12 h-12 rounded-lg bg-gray-50 flex items-center justify-center text-gray-400 group-hover:bg-red-light group-hover:text-red transition-colors shrink-0">
-                  ${icon}
-                </div>
-                <div class="flex-1 min-w-0">
-                  <div class="font-medium text-black text-[15px] group-hover:text-red transition-colors">${f.label}</div>
-                  <div class="text-[12px] text-gray-400 uppercase tracking-wider mt-0.5">${f.file_type.toUpperCase()}</div>
-                </div>
-                <svg class="w-5 h-5 text-gray-300 group-hover:text-red transition-colors shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-              </a>
-            `;
+            var icon = getFileIcon(f.file_type);
+            return '<a href="' + f.download_url + '" target="_blank" class="flex items-center gap-4 p-5 rounded-xl border border-black/8 bg-white hover:shadow-md hover:border-red/20 transition-all group">' +
+              '<div class="w-12 h-12 rounded-lg bg-gray-50 flex items-center justify-center text-gray-400 group-hover:bg-red-light group-hover:text-red transition-colors shrink-0">' + icon + '</div>' +
+              '<div class="flex-1 min-w-0">' +
+                '<div class="font-medium text-black text-[15px] group-hover:text-red transition-colors">' + f.label + '</div>' +
+                '<div class="text-[12px] text-gray-400 uppercase tracking-wider mt-0.5">' + f.file_type.toUpperCase() + '</div>' +
+              '</div>' +
+              '<svg class="w-5 h-5 text-gray-300 group-hover:text-red transition-colors shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>' +
+            '</a>';
           }).join('');
         } else {
-          fileList.innerHTML = `
-            <div class="text-center py-12 text-gray-400">
-              <p class="text-lg mb-2">No documents available yet.</p>
-              <p class="text-sm">The broker is preparing the dataroom. You'll be notified when documents are ready.</p>
-            </div>
-          `;
+          fileList.innerHTML = '<div class="text-center py-12 text-gray-400">' +
+            '<p class="text-lg mb-2">No documents available yet.</p>' +
+            '<p class="text-sm">The broker is preparing the dataroom. You\'ll be notified when documents are ready.</p>' +
+          '</div>';
         }
 
         document.getElementById('loading').classList.add('hidden');
