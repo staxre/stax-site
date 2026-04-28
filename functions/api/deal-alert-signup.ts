@@ -2,13 +2,11 @@
  * POST /api/deal-alert-signup
  *
  * Handles deal alert email signups from the off-market page.
- * 1. Creates a ClickUp task in "Off-Market Leads" list (tagged as deal-alert)
- * 2. Sends welcome email to subscriber via Resend
- * 3. Sends notification to Michael
+ * 1. Sends welcome email to subscriber via Resend
+ * 2. Sends notification to Michael
  */
 
 interface Env {
-  CLICKUP_API_KEY: string;
   RESEND_API_KEY: string;
 }
 
@@ -16,8 +14,6 @@ interface SignupPayload {
   email: string;
   timestamp: string;
 }
-
-const CLICKUP_LIST_ID = '901326469668'; // Deal Hunter > Off-Market Leads
 
 export const onRequestPost: PagesFunction<Env> = async (context) => {
   const corsHeaders = {
@@ -40,38 +36,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit',
     });
 
-    // --- 1. Create ClickUp Task ---
-    const clickupBody = {
-      name: `Deal Alert Signup: ${body.email}`,
-      description: [
-        `## Deal Alert Signup`,
-        ``,
-        `- Email: ${body.email}`,
-        `- Signed Up: ${signedDate}`,
-        `- Source: staxre.com/off-market`,
-        ``,
-        `*Add to email list for new off-market opportunities.*`,
-      ].join('\n'),
-      priority: 3, // Normal
-    };
-
-    const clickupRes = await fetch(
-      `https://api.clickup.com/api/v2/list/${CLICKUP_LIST_ID}/task`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: context.env.CLICKUP_API_KEY,
-        },
-        body: JSON.stringify(clickupBody),
-      }
-    );
-
-    if (!clickupRes.ok) {
-      console.error('ClickUp error:', clickupRes.status, await clickupRes.text());
-    }
-
-    // --- 2. Welcome email to subscriber ---
+    // --- 1. Welcome email to subscriber ---
     const welcomeHtml = `
       <div style="font-family: Inter, sans-serif; max-width: 560px;">
         <img src="https://staxre.com/images/stax-logo-black.svg" alt="STAX Real Estate" style="height: 28px; margin-bottom: 24px;" />
@@ -83,7 +48,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
           <strong>Michael Salafia</strong><br/>
           Founder &amp; Principal Broker<br/>
           STAX Real Estate<br/>
-          <a href="tel:+13217700222" style="color: #DA291C;">(321) 770-0222</a> &middot;
+          <a href="tel:+13052010125" style="color: #DA291C;">(305) 201-0125</a> &middot;
           <a href="mailto:michael@staxre.com" style="color: #DA291C;">michael@staxre.com</a>
         </p>
       </div>
@@ -104,7 +69,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       }),
     });
 
-    // --- 3. Notify Michael ---
+    // --- 2. Notify Michael ---
     await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {

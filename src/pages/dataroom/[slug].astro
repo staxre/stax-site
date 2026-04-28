@@ -1,0 +1,135 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const { slug } = Astro.params;
+---
+
+<BaseLayout title="Confidential Dataroom — STAX Real Estate" description="Secure access to confidential property data.">
+
+  <section class="pt-[140px] pb-12 px-6 lg:px-12">
+    <div class="max-w-[900px] mx-auto">
+
+      <!-- Loading state -->
+      <div id="loading" class="text-center py-20">
+        <div class="inline-block w-8 h-8 border-2 border-red border-t-transparent rounded-full animate-spin mb-4"></div>
+        <p class="text-gray-500">Validating access...</p>
+      </div>
+
+      <!-- Access denied -->
+      <div id="denied" class="text-center py-20 hidden">
+        <div class="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-6">
+          <svg class="w-8 h-8 text-red-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <h1 class="font-heading text-3xl font-semibold text-black mb-3">Access Denied</h1>
+        <p class="text-gray-600 text-lg mb-2" id="denied-reason">This link is invalid or has expired.</p>
+        <p class="text-gray-500 text-sm">Contact <a href="mailto:michael@staxre.com" class="text-red hover:underline">michael@staxre.com</a> if you believe this is an error.</p>
+      </div>
+
+      <!-- Dataroom content -->
+      <div id="dataroom" class="hidden">
+        <div class="inline-block bg-red-light text-red text-[11px] font-semibold tracking-[2px] uppercase px-2.5 py-1 rounded mb-4">Confidential Dataroom</div>
+        <h1 class="font-heading text-3xl lg:text-[42px] leading-[1.15] font-semibold text-black mb-3 tracking-tight" id="dr-title"></h1>
+        <p class="text-gray-600 text-[15px] mb-2">Welcome, <strong id="dr-buyer"></strong>. The documents below are confidential per your signed NDA.</p>
+        <p class="text-[13px] text-gray-400 mb-8">Do not share, forward, or distribute any materials from this dataroom.</p>
+
+        <!-- File list -->
+        <div class="space-y-3" id="file-list">
+          <!-- Files injected here -->
+        </div>
+
+        <div class="mt-10 pt-8 border-t border-gray-100">
+          <p class="text-[13px] text-gray-400 leading-relaxed">All materials in this dataroom are provided under the terms of your signed Non-Disclosure and Confidentiality Agreement with STAX Real Estate. Unauthorized disclosure, reproduction, or distribution is strictly prohibited and may result in legal action.</p>
+          <div class="mt-6 flex items-center gap-4">
+            <img src="/images/stax-logo-black.svg" alt="STAX Real Estate" class="h-6" />
+            <div class="text-[13px] text-gray-500">
+              <strong>Michael Salafia</strong> &middot; (305) 201-0125 &middot; <a href="mailto:michael@staxre.com" class="text-red hover:underline">michael@staxre.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script is:inline define:vars={{ slug }}>
+    const DEALNGN_BASE = 'https://dealngn.com';
+
+    async function init() {
+      const params = new URLSearchParams(window.location.search);
+      const token = params.get('token');
+
+      if (!token) {
+        showDenied('No access token provided.');
+        return;
+      }
+
+      try {
+        // Validate token
+        const validateRes = await fetch(`${DEALNGN_BASE}/api/nda/dataroom/${slug}/validate?token=${encodeURIComponent(token)}`);
+        const validateData = await validateRes.json();
+
+        if (!validateData.valid) {
+          showDenied(validateData.error || 'Access denied.');
+          return;
+        }
+
+        // Load files
+        const filesRes = await fetch(`${DEALNGN_BASE}/api/nda/dataroom/${slug}/files?token=${encodeURIComponent(token)}`);
+        const filesData = await filesRes.json();
+
+        // Render
+        document.getElementById('dr-title').textContent = validateData.property_title;
+        document.getElementById('dr-buyer').textContent = validateData.buyer_name;
+
+        const fileList = document.getElementById('file-list');
+
+        if (filesData.files && filesData.files.length > 0) {
+          fileList.innerHTML = filesData.files.map(function(f) {
+            const icon = getFileIcon(f.file_type);
+            return `
+              <a href="${f.download_url}" target="_blank" class="flex items-center gap-4 p-5 rounded-xl border border-black/8 bg-white hover:shadow-md hover:border-red/20 transition-all group">
+                <div class="w-12 h-12 rounded-lg bg-gray-50 flex items-center justify-center text-gray-400 group-hover:bg-red-light group-hover:text-red transition-colors shrink-0">
+                  ${icon}
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="font-medium text-black text-[15px] group-hover:text-red transition-colors">${f.label}</div>
+                  <div class="text-[12px] text-gray-400 uppercase tracking-wider mt-0.5">${f.file_type.toUpperCase()}</div>
+                </div>
+                <svg class="w-5 h-5 text-gray-300 group-hover:text-red transition-colors shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              </a>
+            `;
+          }).join('');
+        } else {
+          fileList.innerHTML = `
+            <div class="text-center py-12 text-gray-400">
+              <p class="text-lg mb-2">No documents available yet.</p>
+              <p class="text-sm">The broker is preparing the dataroom. You'll be notified when documents are ready.</p>
+            </div>
+          `;
+        }
+
+        document.getElementById('loading').classList.add('hidden');
+        document.getElementById('dataroom').classList.remove('hidden');
+
+      } catch (err) {
+        console.error('Dataroom init error:', err);
+        showDenied('Could not validate access. Please try again later.');
+      }
+    }
+
+    function showDenied(reason) {
+      document.getElementById('loading').classList.add('hidden');
+      document.getElementById('denied-reason').textContent = reason;
+      document.getElementById('denied').classList.remove('hidden');
+    }
+
+    function getFileIcon(type) {
+      if (type === 'pdf') return '<svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>';
+      if (type === 'xlsx') return '<svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>';
+      return '<svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>';
+    }
+
+    init();
+  </script>
+
+</BaseLayout>
