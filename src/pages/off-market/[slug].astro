@@ -1,68 +1,269 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import ListingCard from '../components/ListingCard.astro';
-import { getPublishedListings, getOffMarketListings } from '../lib/listings';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ListingCard from '../../components/ListingCard.astro';
+import {
+  getPublishedListings,
+  getOffMarketListings,
+  formatPrice,
+} from '../../lib/listings';
+import type { Listing } from '../../lib/listings';
 
-const data = await getPublishedListings();
-const offMarket = getOffMarketListings(data);
+export async function getStaticPaths() {
+  const data = await getPublishedListings();
+  const offMarket = getOffMarketListings(data);
 
-// Build safety: refuse to deploy an empty off-market page
-if (offMarket.length === 0 && import.meta.env.PROD) {
-  throw new Error('No off-market listings returned from API — refusing to build empty /off-market page');
+  return offMarket.map((listing) => ({
+    params: { slug: listing.slug },
+    props: { listing, allListings: offMarket },
+  }));
 }
+
+interface Props {
+  listing: Listing;
+  allListings: Listing[];
+}
+
+const { listing, allListings } = Astro.props;
+
+// Off-market: don't expose street address in title/meta
+const title = listing.meta_title
+  || `Off-Market ${listing.property_type || "Gas Station"} — ${listing.city}, ${listing.state} | STAX Real Estate`;
+const description = listing.meta_description
+  || `Exclusive off-market ${listing.property_type?.toLowerCase() || "gas station"} opportunity in ${listing.city}, ${listing.state}. Sign our NDA for full property details and financials. STAX Real Estate.`;
+const ogImage = listing.hero_image_url || '/images/og-off-market.jpg';
+
+const related = allListings
+  .filter((l) => l.slug !== listing.slug)
+  .slice(0, 3);
+
+// Build teaser metrics (limited for off-market)
+const displayMetrics = listing.metrics && Object.keys(listing.metrics).length > 0
+  ? Object.entries(listing.metrics).map(([label, value]) => ({ label, value }))
+  : [
+      listing.asking_price ? { label: "Asking Price", value: formatPrice(listing.asking_price) } : null,
+      listing.ebitda ? { label: "EBITDA", value: formatPrice(listing.ebitda) } : null,
+      listing.noi ? { label: "NOI", value: formatPrice(listing.noi) } : null,
+    ].filter(Boolean) as Array<{ label: string; value: string }>;
+
+const highlights = listing.highlights ?? [];
+const badges = listing.display_badges ?? [];
+
+// JSON-LD — limited info for off-market
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "RealEstateListing",
+  "name": listing.name,
+  "description": description,
+  "url": `https://staxre.com/off-market/${listing.slug}`,
+  ...(listing.published_at && { "datePosted": listing.published_at }),
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": listing.city,
+    "addressRegion": listing.state || "FL",
+    "addressCountry": "US",
+  },
+  "broker": {
+    "@type": "RealEstateAgent",
+    "name": "STAX Real Estate",
+    "url": "https://staxre.com",
+    "telephone": "+1-321-770-0222",
+  },
+};
 ---
 
-<BaseLayout title="Off-Market Opportunities — Gas Stations & Travel Centers | STAX Real Estate" description="Exclusive off-market gas stations, travel centers, and net-lease investments not listed on public marketplaces. Sign our NDA to unlock full property details.">
+<BaseLayout title={title} description={description} ogImage={ogImage}>
 
-  <!-- HERO -->
-  <section class="pt-[140px] pb-[60px] px-6 lg:px-12">
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
+
+  {/* Breadcrumbs */}
+  <section class="pt-[100px] pb-0 px-6 lg:px-12">
     <div class="max-w-[1200px] mx-auto">
-      <div class="inline-block bg-red-light text-red text-[11px] font-semibold tracking-[2px] uppercase px-2.5 py-1 rounded mb-6">Off-Market Inventory</div>
-      <h1 class="font-heading text-4xl lg:text-[52px] leading-[1.12] font-semibold text-black mb-6 tracking-tight max-w-[900px]">
-        Off-Market Opportunities
+      <nav class="text-[13px] text-gray-500">
+        <a href="/off-market" class="hover:text-red transition-colors">Off-Market</a>
+        <span class="mx-2">/</span>
+        <span class="text-black font-medium">{listing.name}</span>
+      </nav>
+    </div>
+  </section>
+
+  {/* Hero */}
+  <section class="pt-8 pb-12 px-6 lg:px-12">
+    <div class="max-w-[1200px] mx-auto">
+
+      {/* Dark placeholder or image */}
+      {listing.hero_image_url ? (
+        <div class="w-full h-[400px] lg:h-[500px] overflow-hidden rounded-xl bg-gray-100">
+          <img
+            src={listing.hero_image_url}
+            alt={`${listing.name} — ${listing.city}, ${listing.state}`}
+            class="w-full h-full object-cover"
+          />
+        </div>
+      ) : (
+        <div class="w-full h-[300px] lg:h-[400px] overflow-hidden rounded-xl bg-gradient-to-br from-[#1a1e2e] via-[#2a2e3e] to-[#1a1e2e] flex items-center justify-center flex-col gap-4">
+          <div class="w-16 h-16 border-2 border-white/15 rounded-full flex items-center justify-center text-white/30">
+            <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+            </svg>
+          </div>
+          <span class="text-white/30 text-[12px] font-semibold tracking-[3px] uppercase">Confidential Listing</span>
+        </div>
+      )}
+
+      {/* Badges */}
+      {badges.length > 0 && (
+        <div class="flex items-center gap-3 mt-8">
+          {badges.map((badge) => (
+            <span
+              class="inline-block text-[10px] font-semibold px-3 py-1.5 rounded uppercase tracking-wider"
+              style={`color: white; background-color: ${badge.color === "red" ? "#DA291C" : badge.color === "black" ? "#000" : badge.color}`}
+            >
+              {badge.text}
+            </span>
+          ))}
+          <span class="inline-block text-[10px] font-semibold px-3 py-1.5 rounded uppercase tracking-wider bg-black/75 text-white">
+            NDA Required
+          </span>
+        </div>
+      )}
+
+      <h1 class="font-heading text-3xl lg:text-[44px] leading-[1.15] font-semibold text-black mt-6 mb-4 tracking-tight">
+        {listing.name}
       </h1>
-      <p class="text-lg leading-relaxed text-gray-700 max-w-[600px]">
-        Gas stations, travel centers, and net-lease investments not available on public marketplaces. Sign our confidentiality agreement to unlock full property details.
+
+      <p class="text-lg text-gray-500 mb-8">
+        {[listing.city, listing.state].filter(Boolean).join(", ")}
+        {listing.property_type ? ` — ${listing.property_type}` : ""}
       </p>
     </div>
   </section>
 
-  <!-- LISTING CARDS -->
-  <section class="pb-24 px-6 lg:px-12">
-    <div class="max-w-[1200px] mx-auto space-y-12">
-      {offMarket.map((listing) => (
-        <ListingCard listing={listing} mode="off-market" />
-      ))}
+  {/* Content */}
+  <section class="pb-16 px-6 lg:px-12">
+    <div class="max-w-[1200px] mx-auto lg:grid lg:grid-cols-[1fr_360px] lg:gap-16">
+
+      {/* Left Column */}
+      <div>
+        {/* Key Metrics */}
+        {displayMetrics.length > 0 && (
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-8 mb-12 pb-12 border-b border-gray-100">
+            {displayMetrics.map((m, i) => (
+              <div>
+                <div class="text-[10px] font-semibold text-gray-500 uppercase tracking-wider mb-1">{m.label}</div>
+                <div class:list={["font-heading text-3xl font-bold", i === 0 ? "text-red" : "text-black"]}>
+                  {m.value}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* Highlights */}
+        {highlights.length > 0 && (
+          <div class="flex flex-wrap gap-2 mb-10">
+            {highlights.map((h) => (
+              <span class="text-[12px] font-medium text-gray-700 bg-gray-100 px-4 py-2 rounded-full">{h}</span>
+            ))}
+          </div>
+        )}
+
+        {/* Teaser Description */}
+        {listing.website_description && (
+          <div class="prose prose-lg max-w-none mb-12">
+            <p class="text-[16px] leading-[1.8] text-gray-700 whitespace-pre-line">
+              {listing.website_description}
+            </p>
+          </div>
+        )}
+
+        {/* NDA CTA Block */}
+        <div class="bg-gray-50 rounded-xl p-10 text-center mb-12">
+          <div class="w-14 h-14 border-2 border-gray-200 rounded-full flex items-center justify-center mx-auto mb-5 text-gray-400">
+            <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+            </svg>
+          </div>
+          <h3 class="font-heading text-xl font-semibold text-black mb-3">Full Details Under NDA</h3>
+          <p class="text-[15px] text-gray-600 leading-relaxed mb-6 max-w-[480px] mx-auto">
+            This is a confidential listing. Sign our non-disclosure agreement to receive the complete property package including address, financials, lease terms, and offering memorandum.
+          </p>
+          <button
+            class="inline-flex items-center gap-2.5 bg-red text-white px-8 py-4 rounded-md text-[15px] font-semibold hover:bg-red-dark transition-colors border-none cursor-pointer font-body"
+            onclick="openNDA()"
+          >
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+            </svg>
+            Request Confidential Access
+          </button>
+        </div>
+      </div>
+
+      {/* Right Column: Sidebar */}
+      <div>
+        <div class="bg-gray-50 rounded-xl p-8 mb-8 sticky top-[88px]">
+          <h3 class="font-heading text-lg font-semibold text-black mb-6">Overview</h3>
+          <dl class="space-y-4">
+            <div class="flex justify-between">
+              <dt class="text-sm text-gray-500">Location</dt>
+              <dd class="text-sm font-medium text-black">{listing.city}, {listing.state || 'FL'}</dd>
+            </div>
+            {listing.property_type && (
+              <div class="flex justify-between">
+                <dt class="text-sm text-gray-500">Type</dt>
+                <dd class="text-sm font-medium text-black">{listing.property_type}</dd>
+              </div>
+            )}
+            {listing.brand && (
+              <div class="flex justify-between">
+                <dt class="text-sm text-gray-500">Brand</dt>
+                <dd class="text-sm font-medium text-black">{listing.brand}</dd>
+              </div>
+            )}
+            {listing.deal_type && (
+              <div class="flex justify-between">
+                <dt class="text-sm text-gray-500">Sale Type</dt>
+                <dd class="text-sm font-medium text-black">{listing.deal_type}</dd>
+              </div>
+            )}
+          </dl>
+
+          <div class="mt-8 pt-6 border-t border-gray-200">
+            <button
+              onclick="openNDA()"
+              class="block w-full text-center bg-red text-white py-4 rounded-md text-[15px] font-semibold hover:bg-red-dark transition-colors border-none cursor-pointer font-body"
+            >
+              Unlock Full Details
+            </button>
+            <p class="text-center text-[12px] text-gray-500 mt-3">
+              <a href="tel:+13217700222" class="text-red hover:underline">(321) 770-0222</a>
+              &middot;
+              <a href="mailto:michael@staxre.com" class="text-red hover:underline">michael@staxre.com</a>
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- DEAL ALERTS SIGNUP -->
-  <section class="py-24 px-6 lg:px-12 bg-gray-100">
-    <div class="max-w-[700px] mx-auto text-center">
-      <div class="text-[11px] font-semibold tracking-[2px] uppercase text-red mb-4">Deal Alerts</div>
-      <h2 class="font-heading text-3xl lg:text-[40px] font-semibold text-black mb-4 tracking-tight leading-snug">
-        Get first look at new deals
-      </h2>
-      <p class="text-[17px] leading-relaxed text-gray-700 mb-10">
-        Off-market opportunities, new listings, and portfolio sales &mdash; including full financials, lease terms, and depreciation analysis. Direct to your inbox.
-      </p>
-      <form class="flex flex-col sm:flex-row gap-3" onsubmit="event.preventDefault(); submitDealAlert();">
-        <input
-          type="email"
-          id="alertEmail"
-          placeholder="your@email.com"
-          class="flex-1 px-5 py-4 rounded-md border border-black/8 text-[15px] focus:outline-none focus:border-red transition-colors"
-          required
-        />
-        <button type="submit" class="bg-red text-white px-8 py-4 rounded-md text-[15px] font-semibold hover:bg-red-dark transition-colors whitespace-nowrap cursor-pointer border-none font-body">
-          Get Deal Alerts
-        </button>
-      </form>
-      <p class="text-[13px] text-gray-600 mt-4">Matching deals only. Unsubscribe anytime.</p>
-    </div>
-  </section>
+  {/* Related */}
+  {related.length > 0 && (
+    <section class="py-20 px-6 lg:px-12 bg-gray-50">
+      <div class="max-w-[1200px] mx-auto">
+        <h2 class="font-heading text-2xl lg:text-3xl font-semibold text-black mb-10">Other Off-Market Opportunities</h2>
+        <div class="space-y-12">
+          {related.map((r) => (
+            <ListingCard listing={r} mode="off-market" />
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
 
-  <!-- DARK CTA: Seller -->
+  {/* CTA */}
   <section class="bg-gradient-to-br from-black to-[#1a1a2e] py-20 px-6 lg:px-12 text-center">
     <div class="max-w-[640px] mx-auto">
       <h2 class="font-heading text-3xl lg:text-4xl font-semibold text-white mb-4">Have a station to sell?</h2>
@@ -74,13 +275,13 @@ if (offMarket.length === 0 && import.meta.env.PROD) {
     </div>
   </section>
 
-  <!-- NDA MODAL -->
+  {/* NDA MODAL — same as /off-market index */}
   <div class="fixed inset-0 bg-black/50 z-[1000] items-center justify-center p-5 hidden" id="ndaModal" style="display: none;">
     <div class="bg-white rounded-xl max-w-[640px] w-full max-h-[90vh] overflow-y-auto relative shadow-2xl">
       <button class="absolute top-5 right-5 bg-transparent border-none text-gray-500 text-[28px] cursor-pointer leading-none p-1 hover:text-black" onclick="closeNDA()">&times;</button>
       <div class="px-8 pt-7 pb-5 border-b border-gray-100">
         <h2 class="font-heading text-2xl font-semibold text-black mb-2">Confidential Access Request</h2>
-        <p class="text-sm text-gray-700 leading-relaxed">Complete the form and agree to our terms to receive the full property package including address, financials, and offering memorandum for <strong id="modalPropertyName"></strong>.</p>
+        <p class="text-sm text-gray-700 leading-relaxed">Complete the form and agree to our terms to receive the full property package for <strong>{listing.name}</strong>.</p>
       </div>
       <div class="px-8 py-6">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
@@ -114,8 +315,6 @@ if (offMarket.length === 0 && import.meta.env.PROD) {
             <option value="fund">Fund / Institutional</option>
           </select>
         </div>
-
-        <!-- NDA Text Box -->
         <div class="bg-gray-100 border border-gray-100 rounded-md p-5 max-h-[200px] overflow-y-auto text-[12px] leading-[1.7] text-gray-600 my-5">
           <h4 class="text-black text-[12px] font-bold uppercase tracking-wide mb-1.5">Non-Disclosure and Confidentiality Agreement</h4>
           <p>By executing this agreement ("Agreement"), the undersigned ("Recipient") agrees to the following terms in connection with receiving confidential information regarding off-market commercial real estate opportunities presented by STAX Real Estate ("Broker").</p>
@@ -132,8 +331,6 @@ if (offMarket.length === 0 && import.meta.env.PROD) {
           <h4 class="text-black text-[12px] font-bold uppercase tracking-wide mt-3.5 mb-1.5">6. Electronic Acceptance</h4>
           <p>Clicking "I Agree" and typing your name constitutes a legally binding electronic signature under the E-SIGN Act and UETA.</p>
         </div>
-
-        <!-- Checkboxes -->
         <label class="flex items-start gap-2.5 mb-3.5 cursor-pointer">
           <input type="checkbox" id="agreeNDA" onchange="checkForm()" class="w-[18px] h-[18px] mt-0.5 accent-red shrink-0" />
           <span class="text-[13px] text-gray-800 leading-relaxed">I have read and agree to the Non-Disclosure Agreement, Non-Circumvention clause, and 2% Buyer Representative Commission terms above.</span>
@@ -142,8 +339,6 @@ if (offMarket.length === 0 && import.meta.env.PROD) {
           <input type="checkbox" id="agreeElectronic" onchange="checkForm()" class="w-[18px] h-[18px] mt-0.5 accent-red shrink-0" />
           <span class="text-[13px] text-gray-800 leading-relaxed">I consent to electronic execution of this agreement and understand this constitutes a binding legal commitment.</span>
         </label>
-
-        <!-- Signature -->
         <div class="mt-5 pt-4 border-t border-gray-100">
           <label class="block text-[13px] text-gray-600 mb-2">Type your full legal name as your electronic signature *</label>
           <input type="text" id="signature" placeholder="John Smith" oninput="checkForm()" class="w-full px-4 py-3.5 bg-white border border-black/8 rounded-md text-[22px] font-heading italic focus:outline-none focus:border-gray-300 transition-colors" />
@@ -156,7 +351,6 @@ if (offMarket.length === 0 && import.meta.env.PROD) {
     </div>
   </div>
 
-  <!-- SUCCESS SCREEN -->
   <div class="fixed inset-0 bg-black/50 z-[1001] items-center justify-center hidden" id="successOverlay" style="display: none;">
     <div class="bg-white rounded-xl p-12 text-center max-w-[440px] shadow-2xl">
       <div class="w-14 h-14 bg-red-light rounded-full flex items-center justify-center mx-auto mb-5 text-red text-2xl">&#10003;</div>
@@ -167,26 +361,8 @@ if (offMarket.length === 0 && import.meta.env.PROD) {
     </div>
   </div>
 
-  <!-- PAGE SCRIPTS -->
-  <script is:inline>
-    let selectedProperty = null;
-    let selectedTitle = '';
-
-    // Wire up click handlers for off-market cards
-    document.addEventListener('DOMContentLoaded', function() {
-      document.querySelectorAll('[data-nda-slug]').forEach(function(card) {
-        card.addEventListener('click', function(e) {
-          // Don't trigger if they clicked a link or button inside
-          if (e.target.closest('a')) return;
-          openNDA(card.dataset.ndaSlug, card.dataset.ndaTitle);
-        });
-      });
-    });
-
-    function openNDA(propertySlug, title) {
-      selectedProperty = propertySlug;
-      selectedTitle = title;
-      document.getElementById('modalPropertyName').innerHTML = title;
+  <script is:inline define:vars={{ listingSlug: listing.slug, listingName: listing.name }}>
+    function openNDA() {
       var modal = document.getElementById('ndaModal');
       modal.style.display = 'flex';
       modal.classList.remove('hidden');
@@ -219,8 +395,8 @@ if (offMarket.length === 0 && import.meta.env.PROD) {
 
       var email = document.getElementById('ndaEmail').value.trim();
       var leadData = {
-        property: selectedProperty,
-        propertyTitle: selectedTitle,
+        property: listingSlug,
+        propertyTitle: listingName,
         name: document.getElementById('fullName').value,
         email: email,
         phone: document.getElementById('phone').value,
@@ -253,38 +429,6 @@ if (offMarket.length === 0 && import.meta.env.PROD) {
       });
     }
 
-    function submitDealAlert() {
-      var emailInput = document.getElementById('alertEmail');
-      var email = emailInput.value.trim();
-      if (!email) return;
-
-      var btn = emailInput.nextElementSibling || emailInput.parentElement.querySelector('button');
-      if (btn) { btn.disabled = true; btn.textContent = 'Signing up...'; }
-
-      fetch('/api/deal-alert-signup', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email, timestamp: new Date().toISOString() })
-      }).then(function() {
-        emailInput.value = '';
-        emailInput.placeholder = 'You\'re on the list!';
-        if (btn) { btn.textContent = 'Subscribed'; }
-        setTimeout(function() {
-          emailInput.placeholder = 'your@email.com';
-          if (btn) { btn.disabled = false; btn.textContent = 'Get Deal Alerts'; }
-        }, 3000);
-      }).catch(function(err) {
-        console.error('Signup error:', err);
-        emailInput.value = '';
-        emailInput.placeholder = 'You\'re on the list!';
-        if (btn) { btn.textContent = 'Subscribed'; }
-        setTimeout(function() {
-          emailInput.placeholder = 'your@email.com';
-          if (btn) { btn.disabled = false; btn.textContent = 'Get Deal Alerts'; }
-        }, 3000);
-      });
-    }
-
     function closeSuccess() {
       var overlay = document.getElementById('successOverlay');
       overlay.style.display = 'none';
@@ -296,5 +440,14 @@ if (offMarket.length === 0 && import.meta.env.PROD) {
       document.getElementById('submitBtn').disabled = true;
     }
   </script>
+
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Off-Market", "item": "https://staxre.com/off-market" },
+      { "@type": "ListItem", "position": 2, "name": listing.name, "item": `https://staxre.com/off-market/${listing.slug}` },
+    ],
+  })} />
 
 </BaseLayout>

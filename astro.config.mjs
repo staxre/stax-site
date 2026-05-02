@@ -11,5 +11,15 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()]
   },
-  integrations: [react(), sitemap()]
+  integrations: [react(), sitemap({
+    filter: (page) => !page.includes('/404'),
+    serialize: (item) => {
+      // Listing detail pages get higher priority + weekly updates
+      if (item.url.includes('/deals/') || item.url.includes('/off-market/')) {
+        item.changefreq = 'weekly';
+        item.priority = 0.8;
+      }
+      return item;
+    },
+  })]
 });

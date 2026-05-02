@@ -1,0 +1,1103 @@
+{
+  "listings": [
+    {
+      "id": 7,
+      "name": "Shell — 12000 S Shore Blvd, Wellington, FL",
+      "address": "12000 S Shore Blvd",
+      "city": "Wellington",
+      "state": "FL",
+      "county": "Palm Beach",
+      "parcel_ids": null,
+      "property_type": "Gas Station & C-Store",
+      "brand": "Shell",
+      "lot_acres": 1.39,
+      "building_sqft": 4170,
+      "asking_price": 12500000,
+      "noi": 1100000,
+      "ebitda": null,
+      "cap_rate": 8.8,
+      "vpd": null,
+      "monthly_gallons": 76000,
+      "deal_type": "Listing",
+      "broker_role": "listing_agent",
+      "status": "active",
+      "closing_date": null,
+      "contract_date": null,
+      "effective_date": null,
+      "dd_deadline": null,
+      "financing_deadline": null,
+      "crexi_url": null,
+      "tag": null,
+      "created_at": "2026-05-02 04:17:40",
+      "updated_at": "2026-05-02 04:17:40",
+      "website_published": 1,
+      "slug": "shell-wellington-fl",
+      "website_description": "Flagship Shell station in one of Palm Beach County's most affluent communities — anchored by Publix, across from 420+ luxury condos, and surrounded by $124K+ average household incomes. Zoning restrictions prevent any future gas station competition. Includes a high-volume car wash with new equipment, USPS Post Office on-site, beer cave, café, and walk-in coolers. Environmental clean — Phase I passed, no monitoring required.",
+      "meta_title": "Shell Gas Station for Sale — Wellington, FL | $12.5M | STAX Real Estate",
+      "meta_description": "Flagship Shell station in Wellington, FL. $12.5M asking, 8.80% cap rate, $1.1M NOI, 76K+ gallons/month. Car wash, USPS, beer cave. No competition zoning.",
+      "hero_image_url": "/images/listing-wellington-shell.jpg",
+      "gallery_image_urls": [],
+      "highlights": [
+        "76K+ Gal/Mo",
+        "Car Wash $13K/Mo",
+        "28,500 AADT",
+        "No Competition Zoning",
+        "Env. Clean"
+      ],
+      "metrics": {
+        "Price": "$12.5M",
+        "Cap Rate": "8.80%",
+        "NOI": "$1.1M",
+        "Inside Sales": "$325K/mo"
+      },
+      "display_badges": [
+        {
+          "text": "Owner-User",
+          "color": "red"
+        },
+        {
+          "text": "100% Bonus Dep.",
+          "color": "black"
+        },
+        {
+          "text": "Shell Branded",
+          "color": "red"
+        },
+        {
+          "text": "Fee Simple",
+          "color": "red"
+        }
+      ],
+      "published_at": "2026-05-01",
+      "sort_order": 1
+    },
+    {
+      "id": 10,
+      "name": "South Florida 11-Site Portfolio",
+      "address": null,
+      "city": "Palm Beach / Broward / Miami-Dade",
+      "state": "FL",
+      "county": null,
+      "parcel_ids": null,
+      "property_type": "Gas Station Portfolio",
+      "brand": "Multi-Brand (Exxon, Shell, BP, Chevron, Mobil, Sunoco)",
+      "lot_acres": null,
+      "building_sqft": null,
+      "asking_price": null,
+      "noi": null,
+      "ebitda": null,
+      "cap_rate": null,
+      "vpd": null,
+      "monthly_gallons": null,
+      "deal_type": "Listing",
+      "broker_role": "listing_agent",
+      "status": "active",
+      "closing_date": null,
+      "contract_date": null,
+      "effective_date": null,
+      "dd_deadline": null,
+      "financing_deadline": null,
+      "crexi_url": null,
+      "tag": null,
+      "created_at": "2026-05-02 04:17:40",
+      "updated_at": "2026-05-02 04:17:40",
+      "website_published": 2,
+      "slug": "south-florida-11-site-portfolio",
+      "website_description": "Institutional-scale portfolio of 11 branded gas stations with convenience stores across South Florida's highest-traffic corridors. Six major fuel brands represented. 2025 net profit of $13.7M across 13.2M gallons and $19.7M total income. Private sale of active businesses.",
+      "meta_title": "11-Site Gas Station Portfolio — South Florida | Off-Market | STAX Real Estate",
+      "meta_description": "Exclusive off-market portfolio of 11 branded gas stations in South Florida. $19.7M total income, $13.7M net profit, 13.2M gallons. NDA required.",
+      "hero_image_url": null,
+      "gallery_image_urls": [],
+      "highlights": [
+        "South Florida",
+        "6 Major Brands",
+        "Portfolio Sale",
+        "Active Operations"
+      ],
+      "metrics": {
+        "Total Income": "$19.7M",
+        "Net Profit": "$13.7M",
+        "Fuel Volume": "13.2M gal",
+        "C-Store Sales": "$17.3M"
+      },
+      "display_badges": [
+        {
+          "text": "Portfolio",
+          "color": "red"
+        },
+        {
+          "text": "Multi-Brand",
+          "color": "red"
+        },
+        {
+          "text": "Owner-Operator",
+          "color": "red"
+        }
+      ],
+      "published_at": "2026-05-01",
+      "sort_order": 1
+    },
+    {
+      "id": 8,
+      "name": "St. Petersburg, FL — 3-Site Gas Station Portfolio",
+      "address": "St. Petersburg & Largo, FL",
+      "city": "St. Petersburg",
+      "state": "FL",
+      "county": "Pinellas",
+      "parcel_ids": null,
+      "property_type": "Gas Station Portfolio",
+      "brand": "BP / Chevron",
+      "lot_acres": null,
+      "building_sqft": null,
+      "asking_price": 6000000,
+      "noi": null,
+      "ebitda": null,
+      "cap_rate": null,
+      "vpd": null,
+      "monthly_gallons": 210000,
+      "deal_type": "Listing",
+      "broker_role": "listing_agent",
+      "status": "active",
+      "closing_date": null,
+      "contract_date": null,
+      "effective_date": null,
+      "dd_deadline": null,
+      "financing_deadline": null,
+      "crexi_url": null,
+      "tag": null,
+      "created_at": "2026-05-02 04:17:40",
+      "updated_at": "2026-05-02 04:17:40",
+      "website_published": 1,
+      "slug": "st-pete-portfolio-fl",
+      "website_description": "Three geographically clustered gas stations in the Tampa Bay MSA (3.2M population) — all on hard corner signalized intersections with open fuel contracts. Negotiate your own brand, set your own margins. Each site is $2M individually or $6M for the portfolio. Combined 210K+ gallons/month, $260K+ monthly inside sales. All fee simple, owner-user opportunities with 100% bonus depreciation.",
+      "meta_title": "3-Site Gas Station Portfolio — St. Petersburg, FL | $6M | STAX Real Estate",
+      "meta_description": "3-site gas station portfolio in Tampa Bay MSA. $6M portfolio or $2M/site. 210K+ gallons/month, $260K+ inside sales. Open fuel contracts, hard corners.",
+      "hero_image_url": "/images/listing-stpete-portfolio.jpg",
+      "gallery_image_urls": [],
+      "highlights": [
+        "44,500 AADT (Site 1)",
+        "Hard Corners",
+        "Tampa MSA",
+        "100% Bonus Dep."
+      ],
+      "metrics": {
+        "Portfolio Price": "$6M",
+        "Per Site": "$2M",
+        "Combined Gallons": "210K/mo",
+        "Inside Sales": "$260K/mo"
+      },
+      "display_badges": [
+        {
+          "text": "Portfolio",
+          "color": "red"
+        },
+        {
+          "text": "Open Fuel Contracts",
+          "color": "black"
+        },
+        {
+          "text": "3-Site Portfolio",
+          "color": "black"
+        },
+        {
+          "text": "Fee Simple",
+          "color": "red"
+        }
+      ],
+      "published_at": "2026-05-01",
+      "sort_order": 2
+    },
+    {
+      "id": 11,
+      "name": "2-Station Portfolio — Miami, FL",
+      "address": null,
+      "city": "Miami",
+      "state": "FL",
+      "county": "Miami-Dade",
+      "parcel_ids": null,
+      "property_type": "Gas Station Portfolio",
+      "brand": "Unbranded",
+      "lot_acres": null,
+      "building_sqft": null,
+      "asking_price": 11500000,
+      "noi": null,
+      "ebitda": null,
+      "cap_rate": null,
+      "vpd": null,
+      "monthly_gallons": null,
+      "deal_type": "Listing",
+      "broker_role": "listing_agent",
+      "status": "active",
+      "closing_date": null,
+      "contract_date": null,
+      "effective_date": null,
+      "dd_deadline": null,
+      "financing_deadline": null,
+      "crexi_url": null,
+      "tag": null,
+      "created_at": "2026-05-02 04:17:40",
+      "updated_at": "2026-05-02 04:17:40",
+      "website_published": 2,
+      "slug": "miami-2-site-portfolio",
+      "website_description": "Two gas station properties in the heart of Miami-Dade County offered as a portfolio sale. No fuel supply agreement — buyer has full flexibility to rebrand, re-lease, or owner-operate from day one. Existing tenant vacating upon sale. Fully built-out with canopies, tanks, and c-stores.",
+      "meta_title": "2-Station Gas Station Portfolio — Miami, FL | Off-Market | STAX Real Estate",
+      "meta_description": "Off-market 2-site gas station portfolio in Miami-Dade County. $11.5M asking, no fuel contract, fee simple. Immediate availability. NDA required.",
+      "hero_image_url": "/images/miami-portfolio-rendering.jpg",
+      "gallery_image_urls": [],
+      "highlights": [
+        "Miami-Dade",
+        "Motivated Seller",
+        "Repositioning Upside",
+        "No Fuel Contract"
+      ],
+      "metrics": {
+        "Asking Price": "$11.5M",
+        "Sites": "2",
+        "Structure": "Fee Simple",
+        "Availability": "Immediate"
+      },
+      "display_badges": [
+        {
+          "text": "Portfolio",
+          "color": "red"
+        },
+        {
+          "text": "Unbranded",
+          "color": "red"
+        },
+        {
+          "text": "Owner-Operator",
+          "color": "red"
+        }
+      ],
+      "published_at": "2026-05-01",
+      "sort_order": 2
+    },
+    {
+      "id": 3,
+      "name": "Texaco — 2202 E Bearss Ave, Tampa, FL",
+      "address": "2202 E Bearss Ave",
+      "city": "Tampa",
+      "state": "FL",
+      "county": null,
+      "parcel_ids": null,
+      "property_type": "Gas Station & C-Store",
+      "brand": "Texaco",
+      "lot_acres": 0.77,
+      "building_sqft": 2720,
+      "asking_price": 2800000,
+      "noi": null,
+      "ebitda": null,
+      "cap_rate": null,
+      "vpd": null,
+      "monthly_gallons": 65000,
+      "deal_type": "Listing",
+      "broker_role": "listing_agent",
+      "status": "active",
+      "closing_date": null,
+      "contract_date": null,
+      "effective_date": null,
+      "dd_deadline": null,
+      "financing_deadline": null,
+      "crexi_url": null,
+      "tag": "on-market",
+      "created_at": "2026-04-15 23:23:55",
+      "updated_at": "2026-05-02 04:17:40",
+      "website_published": 1,
+      "slug": "texaco-tampa-fl",
+      "website_description": "Newly renovated Texaco with commercial kitchen (13-ft hood), beer cave, and upgraded equipment — positioned on a 44,600 AADT commuter artery connecting North Tampa to I-275. Pad site to a grocery-anchored center near USF (50,000+ students), Walmart Supercenter, and Target. Includes a U-Haul dealership for diversified income. No Lottery or EBT yet — significant value-add opportunity. Real estate and business sale, fee simple.",
+      "meta_title": "Texaco Gas Station for Sale — Tampa, FL | $2.8M | STAX Real Estate",
+      "meta_description": "Renovated Texaco in Tampa, FL. $2.8M, 65K gal/month, 44,600 AADT near USF. Commercial kitchen, beer cave, U-Haul income. Value-add opportunity.",
+      "hero_image_url": "/images/listing-tampa-texaco.jpg",
+      "gallery_image_urls": [],
+      "highlights": [
+        "44,600 AADT",
+        "U-Haul Income",
+        "No Lottery/EBT Yet",
+        "Newly Renovated",
+        "Bonus Dep."
+      ],
+      "metrics": {
+        "Price": "$2.8M",
+        "Fuel Volume": "65K/mo",
+        "Inside Sales": "$77K/mo",
+        "Inside Margins": "40%"
+      },
+      "display_badges": [
+        {
+          "text": "Owner-User",
+          "color": "red"
+        },
+        {
+          "text": "Value-Add",
+          "color": "black"
+        },
+        {
+          "text": "Texaco Branded",
+          "color": "red"
+        },
+        {
+          "text": "Fee Simple",
+          "color": "red"
+        }
+      ],
+      "published_at": "2026-05-01",
+      "sort_order": 3
+    },
+    {
+      "id": 12,
+      "name": "C-Store & Gas — Port St. Lucie, FL",
+      "address": null,
+      "city": "Port St. Lucie",
+      "state": "FL",
+      "county": "St. Lucie",
+      "parcel_ids": null,
+      "property_type": "Gas Station & C-Store",
+      "brand": "Branded",
+      "lot_acres": null,
+      "building_sqft": null,
+      "asking_price": 1900000,
+      "noi": null,
+      "ebitda": 550000,
+      "cap_rate": null,
+      "vpd": null,
+      "monthly_gallons": null,
+      "deal_type": "Listing",
+      "broker_role": "listing_agent",
+      "status": "active",
+      "closing_date": null,
+      "contract_date": null,
+      "effective_date": null,
+      "dd_deadline": null,
+      "financing_deadline": null,
+      "crexi_url": null,
+      "tag": null,
+      "created_at": "2026-05-02 04:17:40",
+      "updated_at": "2026-05-02 04:17:40",
+      "website_published": 2,
+      "slug": "port-st-lucie-cstore-fl",
+      "website_description": "Established neighborhood convenience store and gas station on the Treasure Coast with nearly $3M in annual merchandise sales and consistent fuel volume. Asset sale with long-term NNN lease in place. Proven operating history with strong gross profit margins.",
+      "meta_title": "C-Store & Gas Station — Port St. Lucie, FL | Off-Market | STAX Real Estate",
+      "meta_description": "Off-market c-store and gas station in Port St. Lucie, FL. $1.9M asking, $550K EBITDA, $6.2M gross sales. NNN lease, Treasure Coast. NDA required.",
+      "hero_image_url": null,
+      "gallery_image_urls": [],
+      "highlights": [
+        "Treasure Coast",
+        "$3M Inside Sales",
+        "NNN Lease",
+        "Established Operations"
+      ],
+      "metrics": {
+        "Asking Price": "$1.9M",
+        "Gross Sales": "$6.2M/yr",
+        "Fuel Volume": "981K gal",
+        "EBITDA": "$550K"
+      },
+      "display_badges": [
+        {
+          "text": "Business Sale",
+          "color": "red"
+        },
+        {
+          "text": "Branded",
+          "color": "red"
+        },
+        {
+          "text": "Asset Sale + NNN Lease",
+          "color": "red"
+        }
+      ],
+      "published_at": "2026-05-01",
+      "sort_order": 3
+    },
+    {
+      "id": 9,
+      "name": "Chevron — 2141 Crystal Grove Dr, Lakeland, FL",
+      "address": "2141 Crystal Grove Dr",
+      "city": "Lakeland",
+      "state": "FL",
+      "county": "Polk",
+      "parcel_ids": null,
+      "property_type": "Gas Station & C-Store",
+      "brand": "Chevron",
+      "lot_acres": 0.62,
+      "building_sqft": 6400,
+      "asking_price": 1990000,
+      "noi": null,
+      "ebitda": null,
+      "cap_rate": null,
+      "vpd": null,
+      "monthly_gallons": 55000,
+      "deal_type": "Listing",
+      "broker_role": "listing_agent",
+      "status": "under_contract",
+      "closing_date": null,
+      "contract_date": null,
+      "effective_date": null,
+      "dd_deadline": null,
+      "financing_deadline": null,
+      "crexi_url": null,
+      "tag": null,
+      "created_at": "2026-05-02 04:17:40",
+      "updated_at": "2026-05-02 04:17:40",
+      "website_published": 1,
+      "slug": "chevron-lakeland-fl",
+      "website_description": "Oversized Chevron station with brand-new 2025 imaging and digital pricing on canopy, Krispy Krunchy Chicken QSR operating inside, and a recently remodeled 5,000+ SF c-store with commercial kitchen and walk-in coolers. Located on the I-4 Corridor between Tampa and Orlando, surrounded by office and industrial parks with heavy commuter traffic. Featured on ABC Local News as a favorite among locals. Environmental compliant, no monitoring. Eight years remaining on fuel supply at Rack +1 with rebate.",
+      "meta_title": "Chevron Gas Station for Sale — Lakeland, FL | Under Contract | STAX Real Estate",
+      "meta_description": "Chevron in Lakeland, FL — under contract at $1.99M. 6,400 SF, Krispy Krunchy QSR, new 2025 imaging. I-4 Corridor, 55K gal/month.",
+      "hero_image_url": "/images/listing-lakeland-chevron.jpg",
+      "gallery_image_urls": [],
+      "highlights": [
+        "New Chevron Imaging 2025",
+        "Krispy Krunchy QSR",
+        "I-4 Corridor",
+        "~8 Yr Fuel Supply",
+        "Env. Clean"
+      ],
+      "metrics": {
+        "List Price": "$1.99M",
+        "Fuel Volume": "55K/mo",
+        "Inside Sales": "$70K/mo",
+        "Price/SF": "$311"
+      },
+      "display_badges": [
+        {
+          "text": "Under Contract",
+          "color": "amber"
+        },
+        {
+          "text": "Owner-User",
+          "color": "black"
+        },
+        {
+          "text": "Chevron Branded",
+          "color": "amber"
+        },
+        {
+          "text": "Fee Simple",
+          "color": "red"
+        }
+      ],
+      "published_at": "2026-05-01",
+      "sort_order": 4
+    },
+    {
+      "id": 13,
+      "name": "Travel Center — Booneville, MS",
+      "address": null,
+      "city": "Booneville",
+      "state": "MS",
+      "county": null,
+      "parcel_ids": null,
+      "property_type": "Travel Center / Truck Stop",
+      "brand": "Exxon",
+      "lot_acres": 16.93,
+      "building_sqft": 6050,
+      "asking_price": 13000000,
+      "noi": 1380000,
+      "ebitda": null,
+      "cap_rate": null,
+      "vpd": null,
+      "monthly_gallons": null,
+      "deal_type": "Listing",
+      "broker_role": "listing_agent",
+      "status": "active",
+      "closing_date": null,
+      "contract_date": null,
+      "effective_date": null,
+      "dd_deadline": null,
+      "financing_deadline": null,
+      "crexi_url": null,
+      "tag": null,
+      "created_at": "2026-05-02 04:17:40",
+      "updated_at": "2026-05-02 04:17:40",
+      "website_published": 2,
+      "slug": "booneville-travel-center-ms",
+      "website_description": "High-volume Exxon travel center on a major interstate corridor in Northeast Mississippi. Built in 2023 on nearly 17 acres with 12 fueling positions including 5 diesel lanes. On-site QSR, beer cave, showers, and room for additional revenue streams.",
+      "meta_title": "Exxon Travel Center — Booneville, MS | Off-Market | STAX Real Estate",
+      "meta_description": "Off-market Exxon travel center in Booneville, MS. $13M asking, $1.38M net income, 17 acres, built 2023. 12 fueling positions, I-22 corridor. NDA required.",
+      "hero_image_url": null,
+      "gallery_image_urls": [],
+      "highlights": [
+        "I-22 Corridor",
+        "Built 2023",
+        "12 Fueling Positions",
+        "QSR On-Site"
+      ],
+      "metrics": {
+        "Asking Price": "$13M",
+        "Fuel Volume": "2.1M gal/yr",
+        "Inside Sales": "$2.3M/yr",
+        "Net Income": "$1.38M"
+      },
+      "display_badges": [
+        {
+          "text": "Owner-User",
+          "color": "red"
+        },
+        {
+          "text": "Exxon Branded",
+          "color": "red"
+        },
+        {
+          "text": "Travel Center",
+          "color": "red"
+        }
+      ],
+      "published_at": "2026-05-01",
+      "sort_order": 4
+    }
+  ],
+  "on_market": [
+    {
+      "id": 7,
+      "name": "Shell — 12000 S Shore Blvd, Wellington, FL",
+      "address": "12000 S Shore Blvd",
+      "city": "Wellington",
+      "state": "FL",
+      "county": "Palm Beach",
+      "parcel_ids": null,
+      "property_type": "Gas Station & C-Store",
+      "brand": "Shell",
+      "lot_acres": 1.39,
+      "building_sqft": 4170,
+      "asking_price": 12500000,
+      "noi": 1100000,
+      "ebitda": null,
+      "cap_rate": 8.8,
+      "vpd": null,
+      "monthly_gallons": 76000,
+      "deal_type": "Listing",
+      "broker_role": "listing_agent",
+      "status": "active",
+      "closing_date": null,
+      "contract_date": null,
+      "effective_date": null,
+      "dd_deadline": null,
+      "financing_deadline": null,
+      "crexi_url": null,
+      "tag": null,
+      "created_at": "2026-05-02 04:17:40",
+      "updated_at": "2026-05-02 04:17:40",
+      "website_published": 1,
+      "slug": "shell-wellington-fl",
+      "website_description": "Flagship Shell station in one of Palm Beach County's most affluent communities — anchored by Publix, across from 420+ luxury condos, and surrounded by $124K+ average household incomes. Zoning restrictions prevent any future gas station competition. Includes a high-volume car wash with new equipment, USPS Post Office on-site, beer cave, café, and walk-in coolers. Environmental clean — Phase I passed, no monitoring required.",
+      "meta_title": "Shell Gas Station for Sale — Wellington, FL | $12.5M | STAX Real Estate",
+      "meta_description": "Flagship Shell station in Wellington, FL. $12.5M asking, 8.80% cap rate, $1.1M NOI, 76K+ gallons/month. Car wash, USPS, beer cave. No competition zoning.",
+      "hero_image_url": "/images/listing-wellington-shell.jpg",
+      "gallery_image_urls": [],
+      "highlights": [
+        "76K+ Gal/Mo",
+        "Car Wash $13K/Mo",
+        "28,500 AADT",
+        "No Competition Zoning",
+        "Env. Clean"
+      ],
+      "metrics": {
+        "Price": "$12.5M",
+        "Cap Rate": "8.80%",
+        "NOI": "$1.1M",
+        "Inside Sales": "$325K/mo"
+      },
+      "display_badges": [
+        {
+          "text": "Owner-User",
+          "color": "red"
+        },
+        {
+          "text": "100% Bonus Dep.",
+          "color": "black"
+        },
+        {
+          "text": "Shell Branded",
+          "color": "red"
+        },
+        {
+          "text": "Fee Simple",
+          "color": "red"
+        }
+      ],
+      "published_at": "2026-05-01",
+      "sort_order": 1
+    },
+    {
+      "id": 8,
+      "name": "St. Petersburg, FL — 3-Site Gas Station Portfolio",
+      "address": "St. Petersburg & Largo, FL",
+      "city": "St. Petersburg",
+      "state": "FL",
+      "county": "Pinellas",
+      "parcel_ids": null,
+      "property_type": "Gas Station Portfolio",
+      "brand": "BP / Chevron",
+      "lot_acres": null,
+      "building_sqft": null,
+      "asking_price": 6000000,
+      "noi": null,
+      "ebitda": null,
+      "cap_rate": null,
+      "vpd": null,
+      "monthly_gallons": 210000,
+      "deal_type": "Listing",
+      "broker_role": "listing_agent",
+      "status": "active",
+      "closing_date": null,
+      "contract_date": null,
+      "effective_date": null,
+      "dd_deadline": null,
+      "financing_deadline": null,
+      "crexi_url": null,
+      "tag": null,
+      "created_at": "2026-05-02 04:17:40",
+      "updated_at": "2026-05-02 04:17:40",
+      "website_published": 1,
+      "slug": "st-pete-portfolio-fl",
+      "website_description": "Three geographically clustered gas stations in the Tampa Bay MSA (3.2M population) — all on hard corner signalized intersections with open fuel contracts. Negotiate your own brand, set your own margins. Each site is $2M individually or $6M for the portfolio. Combined 210K+ gallons/month, $260K+ monthly inside sales. All fee simple, owner-user opportunities with 100% bonus depreciation.",
+      "meta_title": "3-Site Gas Station Portfolio — St. Petersburg, FL | $6M | STAX Real Estate",
+      "meta_description": "3-site gas station portfolio in Tampa Bay MSA. $6M portfolio or $2M/site. 210K+ gallons/month, $260K+ inside sales. Open fuel contracts, hard corners.",
+      "hero_image_url": "/images/listing-stpete-portfolio.jpg",
+      "gallery_image_urls": [],
+      "highlights": [
+        "44,500 AADT (Site 1)",
+        "Hard Corners",
+        "Tampa MSA",
+        "100% Bonus Dep."
+      ],
+      "metrics": {
+        "Portfolio Price": "$6M",
+        "Per Site": "$2M",
+        "Combined Gallons": "210K/mo",
+        "Inside Sales": "$260K/mo"
+      },
+      "display_badges": [
+        {
+          "text": "Portfolio",
+          "color": "red"
+        },
+        {
+          "text": "Open Fuel Contracts",
+          "color": "black"
+        },
+        {
+          "text": "3-Site Portfolio",
+          "color": "black"
+        },
+        {
+          "text": "Fee Simple",
+          "color": "red"
+        }
+      ],
+      "published_at": "2026-05-01",
+      "sort_order": 2
+    },
+    {
+      "id": 3,
+      "name": "Texaco — 2202 E Bearss Ave, Tampa, FL",
+      "address": "2202 E Bearss Ave",
+      "city": "Tampa",
+      "state": "FL",
+      "county": null,
+      "parcel_ids": null,
+      "property_type": "Gas Station & C-Store",
+      "brand": "Texaco",
+      "lot_acres": 0.77,
+      "building_sqft": 2720,
+      "asking_price": 2800000,
+      "noi": null,
+      "ebitda": null,
+      "cap_rate": null,
+      "vpd": null,
+      "monthly_gallons": 65000,
+      "deal_type": "Listing",
+      "broker_role": "listing_agent",
+      "status": "active",
+      "closing_date": null,
+      "contract_date": null,
+      "effective_date": null,
+      "dd_deadline": null,
+      "financing_deadline": null,
+      "crexi_url": null,
+      "tag": "on-market",
+      "created_at": "2026-04-15 23:23:55",
+      "updated_at": "2026-05-02 04:17:40",
+      "website_published": 1,
+      "slug": "texaco-tampa-fl",
+      "website_description": "Newly renovated Texaco with commercial kitchen (13-ft hood), beer cave, and upgraded equipment — positioned on a 44,600 AADT commuter artery connecting North Tampa to I-275. Pad site to a grocery-anchored center near USF (50,000+ students), Walmart Supercenter, and Target. Includes a U-Haul dealership for diversified income. No Lottery or EBT yet — significant value-add opportunity. Real estate and business sale, fee simple.",
+      "meta_title": "Texaco Gas Station for Sale — Tampa, FL | $2.8M | STAX Real Estate",
+      "meta_description": "Renovated Texaco in Tampa, FL. $2.8M, 65K gal/month, 44,600 AADT near USF. Commercial kitchen, beer cave, U-Haul income. Value-add opportunity.",
+      "hero_image_url": "/images/listing-tampa-texaco.jpg",
+      "gallery_image_urls": [],
+      "highlights": [
+        "44,600 AADT",
+        "U-Haul Income",
+        "No Lottery/EBT Yet",
+        "Newly Renovated",
+        "Bonus Dep."
+      ],
+      "metrics": {
+        "Price": "$2.8M",
+        "Fuel Volume": "65K/mo",
+        "Inside Sales": "$77K/mo",
+        "Inside Margins": "40%"
+      },
+      "display_badges": [
+        {
+          "text": "Owner-User",
+          "color": "red"
+        },
+        {
+          "text": "Value-Add",
+          "color": "black"
+        },
+        {
+          "text": "Texaco Branded",
+          "color": "red"
+        },
+        {
+          "text": "Fee Simple",
+          "color": "red"
+        }
+      ],
+      "published_at": "2026-05-01",
+      "sort_order": 3
+    },
+    {
+      "id": 9,
+      "name": "Chevron — 2141 Crystal Grove Dr, Lakeland, FL",
+      "address": "2141 Crystal Grove Dr",
+      "city": "Lakeland",
+      "state": "FL",
+      "county": "Polk",
+      "parcel_ids": null,
+      "property_type": "Gas Station & C-Store",
+      "brand": "Chevron",
+      "lot_acres": 0.62,
+      "building_sqft": 6400,
+      "asking_price": 1990000,
+      "noi": null,
+      "ebitda": null,
+      "cap_rate": null,
+      "vpd": null,
+      "monthly_gallons": 55000,
+      "deal_type": "Listing",
+      "broker_role": "listing_agent",
+      "status": "under_contract",
+      "closing_date": null,
+      "contract_date": null,
+      "effective_date": null,
+      "dd_deadline": null,
+      "financing_deadline": null,
+      "crexi_url": null,
+      "tag": null,
+      "created_at": "2026-05-02 04:17:40",
+      "updated_at": "2026-05-02 04:17:40",
+      "website_published": 1,
+      "slug": "chevron-lakeland-fl",
+      "website_description": "Oversized Chevron station with brand-new 2025 imaging and digital pricing on canopy, Krispy Krunchy Chicken QSR operating inside, and a recently remodeled 5,000+ SF c-store with commercial kitchen and walk-in coolers. Located on the I-4 Corridor between Tampa and Orlando, surrounded by office and industrial parks with heavy commuter traffic. Featured on ABC Local News as a favorite among locals. Environmental compliant, no monitoring. Eight years remaining on fuel supply at Rack +1 with rebate.",
+      "meta_title": "Chevron Gas Station for Sale — Lakeland, FL | Under Contract | STAX Real Estate",
+      "meta_description": "Chevron in Lakeland, FL — under contract at $1.99M. 6,400 SF, Krispy Krunchy QSR, new 2025 imaging. I-4 Corridor, 55K gal/month.",
+      "hero_image_url": "/images/listing-lakeland-chevron.jpg",
+      "gallery_image_urls": [],
+      "highlights": [
+        "New Chevron Imaging 2025",
+        "Krispy Krunchy QSR",
+        "I-4 Corridor",
+        "~8 Yr Fuel Supply",
+        "Env. Clean"
+      ],
+      "metrics": {
+        "List Price": "$1.99M",
+        "Fuel Volume": "55K/mo",
+        "Inside Sales": "$70K/mo",
+        "Price/SF": "$311"
+      },
+      "display_badges": [
+        {
+          "text": "Under Contract",
+          "color": "amber"
+        },
+        {
+          "text": "Owner-User",
+          "color": "black"
+        },
+        {
+          "text": "Chevron Branded",
+          "color": "amber"
+        },
+        {
+          "text": "Fee Simple",
+          "color": "red"
+        }
+      ],
+      "published_at": "2026-05-01",
+      "sort_order": 4
+    }
+  ],
+  "off_market": [
+    {
+      "id": 10,
+      "name": "South Florida 11-Site Portfolio",
+      "address": null,
+      "city": "Palm Beach / Broward / Miami-Dade",
+      "state": "FL",
+      "county": null,
+      "parcel_ids": null,
+      "property_type": "Gas Station Portfolio",
+      "brand": "Multi-Brand (Exxon, Shell, BP, Chevron, Mobil, Sunoco)",
+      "lot_acres": null,
+      "building_sqft": null,
+      "asking_price": null,
+      "noi": null,
+      "ebitda": null,
+      "cap_rate": null,
+      "vpd": null,
+      "monthly_gallons": null,
+      "deal_type": "Listing",
+      "broker_role": "listing_agent",
+      "status": "active",
+      "closing_date": null,
+      "contract_date": null,
+      "effective_date": null,
+      "dd_deadline": null,
+      "financing_deadline": null,
+      "crexi_url": null,
+      "tag": null,
+      "created_at": "2026-05-02 04:17:40",
+      "updated_at": "2026-05-02 04:17:40",
+      "website_published": 2,
+      "slug": "south-florida-11-site-portfolio",
+      "website_description": "Institutional-scale portfolio of 11 branded gas stations with convenience stores across South Florida's highest-traffic corridors. Six major fuel brands represented. 2025 net profit of $13.7M across 13.2M gallons and $19.7M total income. Private sale of active businesses.",
+      "meta_title": "11-Site Gas Station Portfolio — South Florida | Off-Market | STAX Real Estate",
+      "meta_description": "Exclusive off-market portfolio of 11 branded gas stations in South Florida. $19.7M total income, $13.7M net profit, 13.2M gallons. NDA required.",
+      "hero_image_url": null,
+      "gallery_image_urls": [],
+      "highlights": [
+        "South Florida",
+        "6 Major Brands",
+        "Portfolio Sale",
+        "Active Operations"
+      ],
+      "metrics": {
+        "Total Income": "$19.7M",
+        "Net Profit": "$13.7M",
+        "Fuel Volume": "13.2M gal",
+        "C-Store Sales": "$17.3M"
+      },
+      "display_badges": [
+        {
+          "text": "Portfolio",
+          "color": "red"
+        },
+        {
+          "text": "Multi-Brand",
+          "color": "red"
+        },
+        {
+          "text": "Owner-Operator",
+          "color": "red"
+        }
+      ],
+      "published_at": "2026-05-01",
+      "sort_order": 1
+    },
+    {
+      "id": 11,
+      "name": "2-Station Portfolio — Miami, FL",
+      "address": null,
+      "city": "Miami",
+      "state": "FL",
+      "county": "Miami-Dade",
+      "parcel_ids": null,
+      "property_type": "Gas Station Portfolio",
+      "brand": "Unbranded",
+      "lot_acres": null,
+      "building_sqft": null,
+      "asking_price": 11500000,
+      "noi": null,
+      "ebitda": null,
+      "cap_rate": null,
+      "vpd": null,
+      "monthly_gallons": null,
+      "deal_type": "Listing",
+      "broker_role": "listing_agent",
+      "status": "active",
+      "closing_date": null,
+      "contract_date": null,
+      "effective_date": null,
+      "dd_deadline": null,
+      "financing_deadline": null,
+      "crexi_url": null,
+      "tag": null,
+      "created_at": "2026-05-02 04:17:40",
+      "updated_at": "2026-05-02 04:17:40",
+      "website_published": 2,
+      "slug": "miami-2-site-portfolio",
+      "website_description": "Two gas station properties in the heart of Miami-Dade County offered as a portfolio sale. No fuel supply agreement — buyer has full flexibility to rebrand, re-lease, or owner-operate from day one. Existing tenant vacating upon sale. Fully built-out with canopies, tanks, and c-stores.",
+      "meta_title": "2-Station Gas Station Portfolio — Miami, FL | Off-Market | STAX Real Estate",
+      "meta_description": "Off-market 2-site gas station portfolio in Miami-Dade County. $11.5M asking, no fuel contract, fee simple. Immediate availability. NDA required.",
+      "hero_image_url": "/images/miami-portfolio-rendering.jpg",
+      "gallery_image_urls": [],
+      "highlights": [
+        "Miami-Dade",
+        "Motivated Seller",
+        "Repositioning Upside",
+        "No Fuel Contract"
+      ],
+      "metrics": {
+        "Asking Price": "$11.5M",
+        "Sites": "2",
+        "Structure": "Fee Simple",
+        "Availability": "Immediate"
+      },
+      "display_badges": [
+        {
+          "text": "Portfolio",
+          "color": "red"
+        },
+        {
+          "text": "Unbranded",
+          "color": "red"
+        },
+        {
+          "text": "Owner-Operator",
+          "color": "red"
+        }
+      ],
+      "published_at": "2026-05-01",
+      "sort_order": 2
+    },
+    {
+      "id": 12,
+      "name": "C-Store & Gas — Port St. Lucie, FL",
+      "address": null,
+      "city": "Port St. Lucie",
+      "state": "FL",
+      "county": "St. Lucie",
+      "parcel_ids": null,
+      "property_type": "Gas Station & C-Store",
+      "brand": "Branded",
+      "lot_acres": null,
+      "building_sqft": null,
+      "asking_price": 1900000,
+      "noi": null,
+      "ebitda": 550000,
+      "cap_rate": null,
+      "vpd": null,
+      "monthly_gallons": null,
+      "deal_type": "Listing",
+      "broker_role": "listing_agent",
+      "status": "active",
+      "closing_date": null,
+      "contract_date": null,
+      "effective_date": null,
+      "dd_deadline": null,
+      "financing_deadline": null,
+      "crexi_url": null,
+      "tag": null,
+      "created_at": "2026-05-02 04:17:40",
+      "updated_at": "2026-05-02 04:17:40",
+      "website_published": 2,
+      "slug": "port-st-lucie-cstore-fl",
+      "website_description": "Established neighborhood convenience store and gas station on the Treasure Coast with nearly $3M in annual merchandise sales and consistent fuel volume. Asset sale with long-term NNN lease in place. Proven operating history with strong gross profit margins.",
+      "meta_title": "C-Store & Gas Station — Port St. Lucie, FL | Off-Market | STAX Real Estate",
+      "meta_description": "Off-market c-store and gas station in Port St. Lucie, FL. $1.9M asking, $550K EBITDA, $6.2M gross sales. NNN lease, Treasure Coast. NDA required.",
+      "hero_image_url": null,
+      "gallery_image_urls": [],
+      "highlights": [
+        "Treasure Coast",
+        "$3M Inside Sales",
+        "NNN Lease",
+        "Established Operations"
+      ],
+      "metrics": {
+        "Asking Price": "$1.9M",
+        "Gross Sales": "$6.2M/yr",
+        "Fuel Volume": "981K gal",
+        "EBITDA": "$550K"
+      },
+      "display_badges": [
+        {
+          "text": "Business Sale",
+          "color": "red"
+        },
+        {
+          "text": "Branded",
+          "color": "red"
+        },
+        {
+          "text": "Asset Sale + NNN Lease",
+          "color": "red"
+        }
+      ],
+      "published_at": "2026-05-01",
+      "sort_order": 3
+    },
+    {
+      "id": 13,
+      "name": "Travel Center — Booneville, MS",
+      "address": null,
+      "city": "Booneville",
+      "state": "MS",
+      "county": null,
+      "parcel_ids": null,
+      "property_type": "Travel Center / Truck Stop",
+      "brand": "Exxon",
+      "lot_acres": 16.93,
+      "building_sqft": 6050,
+      "asking_price": 13000000,
+      "noi": 1380000,
+      "ebitda": null,
+      "cap_rate": null,
+      "vpd": null,
+      "monthly_gallons": null,
+      "deal_type": "Listing",
+      "broker_role": "listing_agent",
+      "status": "active",
+      "closing_date": null,
+      "contract_date": null,
+      "effective_date": null,
+      "dd_deadline": null,
+      "financing_deadline": null,
+      "crexi_url": null,
+      "tag": null,
+      "created_at": "2026-05-02 04:17:40",
+      "updated_at": "2026-05-02 04:17:40",
+      "website_published": 2,
+      "slug": "booneville-travel-center-ms",
+      "website_description": "High-volume Exxon travel center on a major interstate corridor in Northeast Mississippi. Built in 2023 on nearly 17 acres with 12 fueling positions including 5 diesel lanes. On-site QSR, beer cave, showers, and room for additional revenue streams.",
+      "meta_title": "Exxon Travel Center — Booneville, MS | Off-Market | STAX Real Estate",
+      "meta_description": "Off-market Exxon travel center in Booneville, MS. $13M asking, $1.38M net income, 17 acres, built 2023. 12 fueling positions, I-22 corridor. NDA required.",
+      "hero_image_url": null,
+      "gallery_image_urls": [],
+      "highlights": [
+        "I-22 Corridor",
+        "Built 2023",
+        "12 Fueling Positions",
+        "QSR On-Site"
+      ],
+      "metrics": {
+        "Asking Price": "$13M",
+        "Fuel Volume": "2.1M gal/yr",
+        "Inside Sales": "$2.3M/yr",
+        "Net Income": "$1.38M"
+      },
+      "display_badges": [
+        {
+          "text": "Owner-User",
+          "color": "red"
+        },
+        {
+          "text": "Exxon Branded",
+          "color": "red"
+        },
+        {
+          "text": "Travel Center",
+          "color": "red"
+        }
+      ],
+      "published_at": "2026-05-01",
+      "sort_order": 4
+    }
+  ],
+  "total": 8
+}

@@ -1,5 +1,15 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ListingCard from '../components/ListingCard.astro';
+import { getPublishedListings, getOnMarketListings } from '../lib/listings';
+
+const data = await getPublishedListings();
+const onMarket = getOnMarketListings(data);
+
+// Build safety: refuse to deploy an empty deals page
+if (onMarket.length === 0 && import.meta.env.PROD) {
+  throw new Error('No on-market listings returned from API — refusing to build empty /deals page');
+}
 ---
 
 <BaseLayout title="Gas Station & C-Store Listings — Current Opportunities | STAX Real Estate" description="Browse current gas station and c-store listings from STAX Real Estate. Shell, Chevron, Texaco, and unbranded stations across Florida. Full financials available under NDA.">
@@ -17,225 +27,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
-  <!-- FEATURED LISTINGS -->
+  <!-- LISTINGS -->
   <section class="py-24 px-6 lg:px-12">
     <div class="max-w-[1200px] mx-auto space-y-12">
-
-      <!-- Listing 1: Wellington Shell — Flagship -->
-      <div class="flex flex-col lg:flex-row rounded-xl overflow-hidden border border-black/8 bg-white hover:shadow-lg transition-all">
-        <div class="w-full lg:w-[440px] h-[300px] lg:h-auto shrink-0 bg-gray-100 relative overflow-hidden">
-          <img src="/images/listing-wellington-shell.jpg" alt="Shell Gas Station — Wellington, FL" class="w-full h-full object-cover" />
-          <span class="absolute top-4 left-4 bg-red text-white text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded">Owner-User</span>
-          <span class="absolute top-4 right-4 bg-black text-white text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded">100% Bonus Dep.</span>
-        </div>
-        <div class="p-10 flex-1">
-          <div class="flex items-center gap-3 mb-4">
-            <span class="inline-block text-[10px] font-semibold text-white bg-red px-2.5 py-1 rounded">Shell Branded</span>
-            <span class="inline-block text-[10px] font-semibold text-red bg-red-light px-2.5 py-1 rounded">Fee Simple</span>
-          </div>
-          <h3 class="font-heading text-2xl lg:text-[28px] font-semibold text-black mb-4">Shell — 12000 S Shore Blvd, Wellington, FL</h3>
-          <p class="text-[15px] leading-relaxed text-gray-700 mb-4">
-            Flagship Shell station in one of Palm Beach County's most affluent communities — anchored by Publix, across from 420+ luxury condos, and surrounded by $124K+ average household incomes. Zoning restrictions prevent any future gas station competition. Includes a high-volume car wash with new equipment, USPS Post Office on-site, beer cave, café, and walk-in coolers. Environmental clean — Phase I passed, no monitoring required.
-          </p>
-          <p class="text-sm text-gray-500 mb-6">Wellington, FL &middot; 4,170 SF &middot; 1.39 AC &middot; 12 Pumps &middot; Car Wash &middot; Built 2002</p>
-
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-6">
-            <div>
-              <div class="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">Price</div>
-              <div class="font-heading text-2xl font-bold text-black">$12.5M</div>
-            </div>
-            <div>
-              <div class="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">Cap Rate</div>
-              <div class="font-heading text-2xl font-bold text-black">8.80%</div>
-            </div>
-            <div>
-              <div class="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">NOI</div>
-              <div class="font-heading text-2xl font-bold text-black">$1.1M</div>
-            </div>
-            <div>
-              <div class="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">Inside Sales</div>
-              <div class="font-heading text-2xl font-bold text-red">$325K/mo</div>
-            </div>
-          </div>
-
-          <div class="flex flex-wrap gap-2 mb-6">
-            <span class="text-[11px] font-medium text-gray-600 bg-gray-100 px-3 py-1 rounded-full">76K+ Gal/Mo</span>
-            <span class="text-[11px] font-medium text-gray-600 bg-gray-100 px-3 py-1 rounded-full">Car Wash $13K/Mo</span>
-            <span class="text-[11px] font-medium text-gray-600 bg-gray-100 px-3 py-1 rounded-full">28,500 AADT</span>
-            <span class="text-[11px] font-medium text-gray-600 bg-gray-100 px-3 py-1 rounded-full">No Competition Zoning</span>
-            <span class="text-[11px] font-medium text-gray-600 bg-gray-100 px-3 py-1 rounded-full">Env. Clean</span>
-          </div>
-
-          <a href="/contact" class="inline-flex items-center gap-2.5 bg-red text-white px-7 py-3.5 rounded-md text-[14px] font-semibold hover:bg-red-dark transition-colors">
-            Request Full Package
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- Listing 2: St. Pete 3-Site Portfolio -->
-      <div class="flex flex-col lg:flex-row rounded-xl overflow-hidden border border-black/8 bg-white hover:shadow-lg transition-all">
-        <div class="w-full lg:w-[440px] h-[300px] lg:h-auto shrink-0 bg-gray-100 relative overflow-hidden">
-          <img src="/images/listing-stpete-portfolio.jpg" alt="Gas Station Portfolio — St. Petersburg & Largo, FL" class="w-full h-full object-cover" />
-          <span class="absolute top-4 left-4 bg-red text-white text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded">Portfolio</span>
-          <span class="absolute top-4 right-4 bg-black text-white text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded">Open Fuel Contracts</span>
-        </div>
-        <div class="p-10 flex-1">
-          <div class="flex items-center gap-3 mb-4">
-            <span class="inline-block text-[10px] font-semibold text-white bg-black px-2.5 py-1 rounded">3-Site Portfolio</span>
-            <span class="inline-block text-[10px] font-semibold text-red bg-red-light px-2.5 py-1 rounded">Fee Simple</span>
-          </div>
-          <h3 class="font-heading text-2xl lg:text-[28px] font-semibold text-black mb-4">St. Petersburg, FL — 3-Site Gas Station Portfolio</h3>
-          <p class="text-[15px] leading-relaxed text-gray-700 mb-4">
-            Three geographically clustered gas stations in the Tampa Bay MSA (3.2M population) — all on hard corner signalized intersections with open fuel contracts. Negotiate your own brand, set your own margins. Each site is $2M individually or $6M for the portfolio. Combined 210K+ gallons/month, $260K+ monthly inside sales. All fee simple, owner-user opportunities with 100% bonus depreciation.
-          </p>
-          <p class="text-sm text-gray-500 mb-6">
-            St. Petersburg & Largo, FL &middot; 3 Stations &middot; BP + Chevron Branded &middot; Open Contracts
-          </p>
-
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-6">
-            <div>
-              <div class="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">Portfolio Price</div>
-              <div class="font-heading text-2xl font-bold text-black">$6M</div>
-            </div>
-            <div>
-              <div class="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">Per Site</div>
-              <div class="font-heading text-2xl font-bold text-black">$2M</div>
-            </div>
-            <div>
-              <div class="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">Combined Gallons</div>
-              <div class="font-heading text-2xl font-bold text-black">210K/mo</div>
-            </div>
-            <div>
-              <div class="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">Inside Sales</div>
-              <div class="font-heading text-2xl font-bold text-red">$260K/mo</div>
-            </div>
-          </div>
-
-          <div class="flex flex-wrap gap-2 mb-6">
-            <span class="text-[11px] font-medium text-gray-600 bg-gray-100 px-3 py-1 rounded-full">44,500 AADT (Site 1)</span>
-            <span class="text-[11px] font-medium text-gray-600 bg-gray-100 px-3 py-1 rounded-full">Hard Corners</span>
-            <span class="text-[11px] font-medium text-gray-600 bg-gray-100 px-3 py-1 rounded-full">Tampa MSA</span>
-            <span class="text-[11px] font-medium text-gray-600 bg-gray-100 px-3 py-1 rounded-full">100% Bonus Dep.</span>
-          </div>
-
-          <a href="/contact" class="inline-flex items-center gap-2.5 bg-red text-white px-7 py-3.5 rounded-md text-[14px] font-semibold hover:bg-red-dark transition-colors">
-            Request Full Package
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- Listing 3: Tampa Texaco -->
-      <div class="flex flex-col lg:flex-row rounded-xl overflow-hidden border border-black/8 bg-white hover:shadow-lg transition-all">
-        <div class="w-full lg:w-[440px] h-[300px] lg:h-auto shrink-0 bg-gray-100 relative overflow-hidden">
-          <img src="/images/listing-tampa-texaco.jpg" alt="Texaco Gas Station — Tampa, FL" class="w-full h-full object-cover" />
-          <span class="absolute top-4 left-4 bg-red text-white text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded">Owner-User</span>
-          <span class="absolute top-4 right-4 bg-black text-white text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded">Value-Add</span>
-        </div>
-        <div class="p-10 flex-1">
-          <div class="flex items-center gap-3 mb-4">
-            <span class="inline-block text-[10px] font-semibold text-white bg-red px-2.5 py-1 rounded">Texaco Branded</span>
-            <span class="inline-block text-[10px] font-semibold text-red bg-red-light px-2.5 py-1 rounded">Fee Simple</span>
-          </div>
-          <h3 class="font-heading text-2xl lg:text-[28px] font-semibold text-black mb-4">Texaco — 2202 E Bearss Ave, Tampa, FL</h3>
-          <p class="text-[15px] leading-relaxed text-gray-700 mb-4">
-            Newly renovated Texaco with commercial kitchen (13-ft hood), beer cave, and upgraded equipment — positioned on a 44,600 AADT commuter artery connecting North Tampa to I-275. Pad site to a grocery-anchored center near USF (50,000+ students), Walmart Supercenter, and Target. Includes a U-Haul dealership for diversified income. No Lottery or EBT yet — significant value-add opportunity. Real estate and business sale, fee simple.
-          </p>
-          <p class="text-sm text-gray-500 mb-6">
-            Tampa, FL &middot; 2,720 SF &middot; 0.77 AC &middot; 6 Positions &middot; U-Haul &middot; Near USF
-          </p>
-
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-6">
-            <div>
-              <div class="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">Price</div>
-              <div class="font-heading text-2xl font-bold text-black">$2.8M</div>
-            </div>
-            <div>
-              <div class="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">Fuel Volume</div>
-              <div class="font-heading text-2xl font-bold text-black">65K/mo</div>
-            </div>
-            <div>
-              <div class="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">Inside Sales</div>
-              <div class="font-heading text-2xl font-bold text-black">$77K/mo</div>
-            </div>
-            <div>
-              <div class="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">Inside Margins</div>
-              <div class="font-heading text-2xl font-bold text-red">40%</div>
-            </div>
-          </div>
-
-          <div class="flex flex-wrap gap-2 mb-6">
-            <span class="text-[11px] font-medium text-gray-600 bg-gray-100 px-3 py-1 rounded-full">44,600 AADT</span>
-            <span class="text-[11px] font-medium text-gray-600 bg-gray-100 px-3 py-1 rounded-full">U-Haul Income</span>
-            <span class="text-[11px] font-medium text-gray-600 bg-gray-100 px-3 py-1 rounded-full">No Lottery/EBT Yet</span>
-            <span class="text-[11px] font-medium text-gray-600 bg-gray-100 px-3 py-1 rounded-full">Newly Renovated</span>
-            <span class="text-[11px] font-medium text-gray-600 bg-gray-100 px-3 py-1 rounded-full">Bonus Dep.</span>
-          </div>
-
-          <a href="/contact" class="inline-flex items-center gap-2.5 bg-red text-white px-7 py-3.5 rounded-md text-[14px] font-semibold hover:bg-red-dark transition-colors">
-            Request Full Package
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- Listing 4: Chevron Lakeland — UNDER CONTRACT -->
-      <div class="flex flex-col lg:flex-row rounded-xl overflow-hidden border border-black/8 bg-white hover:shadow-lg transition-all relative">
-        <!-- Under Contract Banner -->
-        <div class="absolute top-0 left-0 right-0 z-10 bg-amber-500 text-white text-center py-2 text-[12px] font-bold tracking-widest uppercase">Under Contract at List Price</div>
-        <div class="w-full lg:w-[440px] h-[300px] lg:h-auto shrink-0 bg-gray-100 relative overflow-hidden mt-[36px] lg:mt-0">
-          <img src="/images/listing-lakeland-chevron.jpg" alt="Chevron Gas Station — Lakeland, FL" class="w-full h-full object-cover" />
-          <span class="absolute top-4 left-4 bg-amber-500 text-white text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded lg:top-[48px]">Under Contract</span>
-          <span class="absolute top-4 right-4 bg-black text-white text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded lg:top-[48px]">Owner-User</span>
-        </div>
-        <div class="p-10 flex-1 lg:pt-[52px]">
-          <div class="flex items-center gap-3 mb-4">
-            <span class="inline-block text-[10px] font-semibold text-white bg-amber-500 px-2.5 py-1 rounded">Chevron Branded</span>
-            <span class="inline-block text-[10px] font-semibold text-red bg-red-light px-2.5 py-1 rounded">Fee Simple</span>
-            <span class="inline-block text-[10px] font-semibold text-amber-700 bg-amber-100 px-2.5 py-1 rounded">Under Contract</span>
-          </div>
-          <h3 class="font-heading text-2xl lg:text-[28px] font-semibold text-black mb-4">Chevron — 2141 Crystal Grove Dr, Lakeland, FL</h3>
-          <p class="text-[15px] leading-relaxed text-gray-700 mb-4">
-            Oversized Chevron station with brand-new 2025 imaging and digital pricing on canopy, Krispy Krunchy Chicken QSR operating inside, and a recently remodeled 5,000+ SF c-store with commercial kitchen and walk-in coolers. Located on the I-4 Corridor between Tampa and Orlando, surrounded by office and industrial parks with heavy commuter traffic. Featured on ABC Local News as a favorite among locals. Environmental compliant, no monitoring. Eight years remaining on fuel supply at Rack +1 with rebate.
-          </p>
-          <p class="text-sm text-gray-500 mb-6">
-            Lakeland, FL &middot; 6,400 SF &middot; 0.62 AC &middot; 6 Positions &middot; Krispy Krunchy QSR &middot; Remodeled 2024
-          </p>
-
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-6">
-            <div>
-              <div class="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">List Price</div>
-              <div class="font-heading text-2xl font-bold text-black">$1.99M</div>
-            </div>
-            <div>
-              <div class="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">Fuel Volume</div>
-              <div class="font-heading text-2xl font-bold text-black">55K/mo</div>
-            </div>
-            <div>
-              <div class="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">Inside Sales</div>
-              <div class="font-heading text-2xl font-bold text-black">$70K/mo</div>
-            </div>
-            <div>
-              <div class="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">Price/SF</div>
-              <div class="font-heading text-2xl font-bold text-black">$311</div>
-            </div>
-          </div>
-
-          <div class="flex flex-wrap gap-2 mb-6">
-            <span class="text-[11px] font-medium text-gray-600 bg-gray-100 px-3 py-1 rounded-full">New Chevron Imaging 2025</span>
-            <span class="text-[11px] font-medium text-gray-600 bg-gray-100 px-3 py-1 rounded-full">Krispy Krunchy QSR</span>
-            <span class="text-[11px] font-medium text-gray-600 bg-gray-100 px-3 py-1 rounded-full">I-4 Corridor</span>
-            <span class="text-[11px] font-medium text-gray-600 bg-gray-100 px-3 py-1 rounded-full">~8 Yr Fuel Supply</span>
-            <span class="text-[11px] font-medium text-gray-600 bg-gray-100 px-3 py-1 rounded-full">Env. Clean</span>
-          </div>
-
-          <div class="inline-flex items-center gap-2.5 bg-amber-500 text-white px-7 py-3.5 rounded-md text-[14px] font-semibold">
-            Under Contract — Contact for Backup Position
-          </div>
-        </div>
-      </div>
-
+      {onMarket.map((listing) => (
+        <ListingCard listing={listing} mode="on-market" />
+      ))}
     </div>
   </section>
 
